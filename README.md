@@ -1,27 +1,35 @@
-# Ricette
+# RecipeAngularUdemy
+
+A recipe application dev in angular, with no-strict option, css and no angular routing.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.9.
 
-## Development server
+## Option 
+- no-strict mode
+- css
+- no angular routing 
+- with bootstrap@3 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Why
+is my training with udemy course
 
-## Code scaffolding
+## how to run 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. `git clone`
+2. `npm install --save bootstrap@3`
+3. `npm install`
+4. `ng serve` or `ng serve my.ip.add.res`
 
-## Build
+## how to replicate
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install -g @angular/cli
 
-## Running unit tests
+ng new name --no-strict
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# answer with default on every question
 
-## Running end-to-end tests
+npm install --save bootstrap@3
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# add to angular.json style array the path of bootstrap.min.css nodemodule
+```
