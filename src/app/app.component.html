@@ -1,5 +1,5 @@
-<app-header *ngIf="!hamburger; else panino">
-</app-header>
+<app-header-btn [active]=tab (choise)="changeTab($event)" *ngIf="!hamburger; else panino">
+</app-header-btn>
 
 <ng-template #panino>
  <app-panino></app-panino>
@@ -7,9 +7,11 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
-    </div>
+	<div class="col-md-12">
+		<app-recipes *ngIf="tab===choises.RECIPES; else shoppingList"></app-recipes>
+		<ng-template  #shoppingList> 
+			<app-shopping-list></app-shopping-list>
+		</ng-template>
+	</div>
   </div>
 </div>

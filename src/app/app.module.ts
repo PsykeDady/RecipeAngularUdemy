@@ -10,11 +10,13 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { PaninoComponent } from './panino/panino.component';
+import { HeaderBtnComponent } from './header-btn/header-btn.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+	HeaderBtnComponent,
     RecipesComponent,
     RecipeListComponent,
     RecipeItemComponent,
