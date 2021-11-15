@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Ingredient } from '../shared/ingredients.model';
 
 @Component({
@@ -9,11 +9,20 @@ import { Ingredient } from '../shared/ingredients.model';
 export class ShoppingListComponent {
 
   ingredients: Ingredient[] = [
-    new Ingredient("pomodori",3),
-    new Ingredient("lattuga",2),
-    new Ingredient("formaggio",1)
   ]
 
-
+	onClickAdd(ingredient: Ingredient){
+		let changed: boolean = false;
+		this.ingredients.forEach(
+			v=> {
+				if(v.name===ingredient.name.toLowerCase().trim()) {
+					changed=true; 
+					v.qta+=ingredient.qta
+				}
+			}
+		);
+		ingredient.name= ingredient.name.toLowerCase().trim()
+		if (! changed )this.ingredients.push(ingredient);
+	}
 
 }

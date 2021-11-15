@@ -1,10 +1,12 @@
 <div class="row">
 	<div class="col-xs-10">
-		<app-shopping-edit></app-shopping-edit>
+		<app-shopping-edit
+			(clickAdd)="onClickAdd($event)"
+		></app-shopping-edit>
 		<hr>
 		<ul class="list-group">
 			<a class="list-group-item" syle="cursor:pointer" *ngFor="let ingrediente of ingredients; let indice = index" >
-				Ingrediente n°{{indice}}) {{ingrediente.qta}} {{ingrediente.name}} 
+				<span class="linenumbers">{{indice}} |</span> ({{ingrediente.qta}}) {{ingrediente.name[0].toUpperCase()}}{{ingrediente.name.slice(1).toLowerCase()}} 
 			</a>
 		</ul>
 	</div>

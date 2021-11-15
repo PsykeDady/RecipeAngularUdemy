@@ -11,6 +11,7 @@ import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { PaninoComponent } from './panino/panino.component';
 import { HeaderBtnComponent } from './header-btn/header-btn.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HeaderBtnComponent } from './header-btn/header-btn.component';
     PaninoComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+	FormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
