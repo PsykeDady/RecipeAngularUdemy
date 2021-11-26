@@ -4,7 +4,7 @@ import { Component, Directive, ElementRef, HostBinding, HostListener } from "@an
 	selector:'[appDropdown]',
 	host: {
 		'(document:click)': 'closeMenu($event)',
-	  }
+	}
 })
 
 export class RicetteDropdown{

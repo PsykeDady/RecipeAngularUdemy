@@ -4,7 +4,7 @@ import { Choise } from '../shared/Choise';
 @Component({
   selector: 'app-header-btn',
   templateUrl: './header-btn.component.html',
-  styles: ['button{border:0; background-color:transparent;  font-weight:bold; } .selected{ color:white; text-shadow: 0 0 5px grey;}']
+  styleUrls: ['./header-btn.component.css']
 })
 export class HeaderBtnComponent  {
 

@@ -8,7 +8,13 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-			Ingredients
+			<h3 class="col-md-3 col-md-offset-3"><u>Ingredients</u></h3>
+
+			<ul class="col-md-9">
+				<li *ngFor="let ingredient of recipe.ingredients"><span class
+					 = "col-md-3">n&deg;({{ingredient.qta}})</span> <span clsas
+					 = "col-md-3">{{ingredient.name}}</span></li>
+			</ul>
 		</div>
 	</div>
 	<hr>
@@ -17,7 +23,7 @@
 			<div class="btn-group" appDropdown>
 				<button type="button" class="btn btn-primary dropdown-toggle">Manage Recipe <span class="caret"></span></button>
 				<ul class="dropdown-menu">
-					<li><a href="#">Add Ingredients to Shopping List</a></li>
+					<li><a href="#" (click)="addToShoppingList()">Add Ingredients to Shopping List</a></li>
 					<li><a href="#">Edit Recipe</a></li>
 					<li><a href="#">Delete Recipe</a></li>
 				</ul>

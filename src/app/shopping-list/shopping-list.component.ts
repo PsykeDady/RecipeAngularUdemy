@@ -1,28 +1,14 @@
 import { Component } from '@angular/core';
-import { Ingredient } from '../shared/ingredients.model';
+import { ShoppingListService } from '../services/shopping-list/shopping.list.service';
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
-  styleUrls: ['./shopping-list.component.css']
+  styleUrls: ['./shopping-list.component.css'],
+  providers: []
 })
 export class ShoppingListComponent {
 
-  ingredients: Ingredient[] = [
-  ]
-
-	onClickAdd(ingredient: Ingredient){
-		let changed: boolean = false;
-		this.ingredients.forEach(
-			v=> {
-				if(v.name===ingredient.name.toLowerCase().trim()) {
-					changed=true; 
-					v.qta+=ingredient.qta
-				}
-			}
-		);
-		ingredient.name= ingredient.name.toLowerCase().trim()
-		if (! changed )this.ingredients.push(ingredient);
-	}
+	constructor(public ingredients: ShoppingListService ) {	}
 
 }

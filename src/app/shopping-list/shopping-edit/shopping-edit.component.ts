@@ -1,5 +1,6 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { Ingredient } from 'src/app/shared/ingredients.model';
+import { Component } from '@angular/core';
+import { ShoppingListService } from 'src/app/services/shopping-list/shopping.list.service';
+import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -12,7 +13,10 @@ export class ShoppingEditComponent  {
 	inputName: string ;
 	inputQta: number ; 
 
-	@Output() clickAdd : EventEmitter<Ingredient> = new EventEmitter<Ingredient>();
+
+	constructor(public ingredients: ShoppingListService ) {
+
+	}
 
 	disabledAdd(){
 		return ! this.inputName || ! this.inputQta || this.inputQta<=0 ;
@@ -23,7 +27,7 @@ export class ShoppingEditComponent  {
 	}
 
 	onAddClick(){
-		this.clickAdd.emit(new Ingredient(this.inputName,this.inputQta))
+		this.ingredients.push(new Ingredient(this.inputName,this.inputQta));
 		this.onClearClick();
 	}
 

@@ -1,0 +1,21 @@
+button {
+  border: 0;
+  background-color: transparent;
+  font-weight: bold;
+  color: lightgrey;
+}
+button:hover {
+  color: grey;
+}
+.selected {
+  color: black;
+  text-shadow: 0 0 2px lightslategrey;
+}
+.selected:hover {
+  color: black;
+}
+
+*,*:focus,*:hover, *:active, .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
+    outline:none;
+}
+  

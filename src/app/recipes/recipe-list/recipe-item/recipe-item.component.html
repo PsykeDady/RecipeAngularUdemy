@@ -1,4 +1,6 @@
-<a (click)="onClick()" href="#" class="list-group-item clearfix"> 
+<a (click)="onClick()" href="#" class="list-group-item clearfix"
+[ngClass]='{selected:selected}'
+> 
 	<div class="pull-left">
 		<h4 class="list-groupt-item-heading">{{recipe.name}}</h4>
 		<p class="list-group-item-text">{{recipe.description}}</p>
