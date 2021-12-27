@@ -7,7 +7,7 @@ export class RecipeService{
 	selectedRecipe_event: EventEmitter<number> = new EventEmitter<number>();
 
 	private _recipes : Recipe [] = [
-		new Recipe("Niente","prendi un piatto vuoto, servilo","https://unniente.com/wp-content/uploads/2018/12/unniente.jpg"),
+		new Recipe("Niente","prendi un piatto vuoto, servilo","https://m.media-amazon.com/images/I/51FCjiqxNUL._AC_SL1002_.jpg"),
 		new Recipe('Pasta al sugo','Penne condite con sugo','https://static.cookist.it/wp-content/uploads/sites/21/2017/10/penne-al-sugo-di-pomodoro.jpg',
 			new Ingredient("penne",500),
 			new Ingredient("passata di pomodoro",0.5),
