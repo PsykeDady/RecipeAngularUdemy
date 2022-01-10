@@ -7,10 +7,5 @@ import { RecipeService } from 'src/app/services/recipes/recipe.service';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent   {
-
-	constructor (public recipe_service: RecipeService){
-		
-	}
-	
-
+	constructor (public recipe_service: RecipeService){		}
 }

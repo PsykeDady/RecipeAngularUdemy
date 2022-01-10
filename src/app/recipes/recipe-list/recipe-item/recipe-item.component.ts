@@ -10,23 +10,8 @@ import { Recipe } from '../../../shared/recipe.model';
 export class RecipeItemComponent {
 
 	@Input() recipe:Recipe;
-	@Input() index: number;
-	selected:boolean=false;
-	constructor (public recipe_service: RecipeService){
-		recipe_service.selectedRecipe_event.subscribe(
-			iSel=> {
-				if(iSel==this.index){
-					this.selected=!this.selected;
-				} else {
-					this.selected=false;
-				}
-			}
-		)
+
+	getLinkName () {
+		return RecipeService.getLinkName(this.recipe.name);
 	}
-
-	onClick(){
-		return this.recipe_service.select(this.index)
-	}
-
-
 }

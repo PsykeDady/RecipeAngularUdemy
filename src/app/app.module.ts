@@ -14,6 +14,7 @@ import { HeaderBtnComponent } from './header-btn/header-btn.component';
 import { FormsModule } from '@angular/forms';
 import { RicetteDropdown } from './directives/dropdown.directive';
 import { ShoppingListService } from './services/shopping-list/shopping.list.service';
+import { AppRouting } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ShoppingListService } from './services/shopping-list/shopping.list.serv
   ],
   imports: [
     BrowserModule,
-	FormsModule 
+	FormsModule,
+	AppRouting
   ],
   providers: [ShoppingListService],
   bootstrap: [AppComponent]

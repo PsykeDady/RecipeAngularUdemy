@@ -1,5 +1,7 @@
-<a (click)="onClick()" href="#" class="list-group-item clearfix"
-[ngClass]='{selected:selected}'
+<a 
+	routerLink={{getLinkName()}} 
+	routerLinkActive="selected"
+	class="list-group-item clearfix"
 > 
 	<div class="pull-left">
 		<h4 class="list-groupt-item-heading">{{recipe.name}}</h4>

@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { RecipeService } from 'src/app/services/recipes/recipe.service';
 import { ShoppingListService } from 'src/app/services/shopping-list/shopping.list.service';
 import { Recipe } from 'src/app/shared/recipe.model';
@@ -11,27 +12,16 @@ import { Recipe } from 'src/app/shared/recipe.model';
 export class RecipeDetailComponent {
 
 	recipe:Recipe=undefined;
-	index:number=undefined;
-	constructor(private recipe_service:RecipeService, private shopping_service : ShoppingListService){
-		this.recipe_service.selectedRecipe_event.subscribe(
-			(selected) => {
-				if(selected>-1){
-					if(selected==this.index){
-						this.clearAll();
-					}else {
-						this.index=selected;
-						this.recipe=recipe_service.getRecipe(selected);
-					}
-				} else {
-					this.clearAll()
-				}
-			}
-		);
+	constructor(recipe_service:RecipeService, private shopping_service : ShoppingListService, router :ActivatedRoute){
+
+		router.url.subscribe(url=>{
+			let name:string=url[url.length-1].path
+			this.recipe=recipe_service.getRecipeByName(name);
+		})
 	}
 
 	clearAll(){
 		this.recipe=undefined;
-		this.index=undefined;
 	}
 
 	addToShoppingList():void{
