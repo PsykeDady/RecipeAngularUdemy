@@ -12,33 +12,26 @@ import { Recipe } from 'src/app/shared/recipe.model';
 export class RecipeDetailComponent {
 
 	recipe:Recipe=undefined;
+	editmode:boolean; 
+
 	constructor(recipe_service:RecipeService, private shopping_service : ShoppingListService, router :ActivatedRoute){
 
-		router.url.subscribe(url=>{
-			let name:string=url[url.length-1].path
+		router.params.subscribe(p=>{
+			let name:string=p["name"]
 			this.recipe=recipe_service.getRecipeByName(name);
 		})
+
+		router.queryParams.subscribe(p=>{
+			let editparam = p["edit"]
+			this.editmode = editparam === "1" || editparam==="true"
+		});
 	}
 
 	clearAll(){
 		this.recipe=undefined;
 	}
 
-	addToShoppingList():void{
-		console.log(this.recipe.ingredients)
-		if (! this.recipe.ingredients || this.recipe.ingredients.length==0) {
-			alert("no ingredients to add!"); 
-			return;
-		}
-
-		this.recipe.ingredients.forEach(
-			v=> {
-				this.shopping_service.push(v);
-			}
-			
-		)
-		alert("shopping list updated!")	
-	}
+	
 	
 
 	

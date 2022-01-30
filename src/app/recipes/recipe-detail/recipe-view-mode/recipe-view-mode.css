@@ -1,0 +1,14 @@
+td{
+	padding: 0 !important ;
+	margin: 0 !important;
+}
+
+ul>li>*:hover{
+	background-color: lightgray;
+}
+
+ul>li>*{
+	background-color: transparent;
+	outline: none;
+	border: none;
+}

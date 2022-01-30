@@ -20,6 +20,15 @@ export class Recipe{
 		return this._ingredients.ingredients;
 	}
 
+	set ingredients(ingredients : Ingredient[]){
+		this._ingredients=new Ingredients();
+		ingredients.forEach(v=>{
+			this._ingredients.push(
+				new Ingredient(v.name,v.qta)
+			);
+		})
+	}
+
 	addIngredient( ingredient : Ingredient) {
 		this._ingredients.push(ingredient);
 	}

@@ -18,17 +18,6 @@ export class RicetteDropdown{
 	onClick (event: Event){	
 		this.aperto=!this.aperto;
 	}
-	// onClick (event: Event){
-	// 	let elE:HTMLElement  = this.el.nativeElement as HTMLElement;
-	// 	console.log(elE.classList);
-	// 	if (elE.classList.contains("open")){
-	// 		elE.classList.remove("open");
-	// 	} else {
-	// 		this.renderer.addClass(this.el.nativeElement,"open")
-	// 	}
-	// 	console.log(elE.classList);
-	// }
-
 
 	closeMenu(event:Event) {
 		this.aperto=this.el.nativeElement.contains(event.target)&&this.aperto;

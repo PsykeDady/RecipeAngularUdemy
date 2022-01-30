@@ -1,0 +1,94 @@
+<div class="row">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<h1>{{recipe.name}}</h1>
+			<img 
+				[src]="recipe.imgPath" 
+				alt="Photo of {{recipe.name}}" 
+				class="img-responsive"
+				(click)="changeImage()"
+			>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<label for="editDescription">
+				Descrizione
+			</label>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<textarea 
+				name="editDescription" 
+				id="editDescription" 
+				class="form-control"
+				[(ngModel)]="newDescription"
+			>
+{{recipe.description}}
+			</textarea>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<h3 class="col-md-3 col-md-offset-3"><u>Ingredients</u></h3>
+	</div>
+</div>
+
+<div class="input-group" *ngFor="let ingredient of recipe.ingredients; trackBy: trackByFn;">
+	
+	<div class="row">
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+			<input class="form-control" type="number"  value="{{ingredient.qta}}">
+		</div>
+			
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<input class="form-control" type="text"  [defaultValue]="ingredient.name">
+		</div>
+	</div>
+	
+	<div class="row">
+		<br>
+	</div>
+	
+</div>
+
+<br>
+
+<div class="row">
+	<button class="
+		btn
+		col-xs-2
+		col-sm-2
+		col-md-2
+		col-lg-2
+		col-xs-offset-1
+		col-sm-offset-1
+		col-md-offset-1
+		col-lg-offset-1
+		btn-success"
+		(click)="salvaModifiche()"
+	>
+		Salva
+	</button>
+
+	<button class="
+		btn
+		col-xs-2
+		col-sm-2
+		col-md-2
+		col-lg-2
+		col-xs-offset-1
+		col-sm-offset-1
+		col-md-offset-1
+		col-lg-offset-1
+		btn-danger"
+		(click)="annullaModifiche()"
+	>
+		Annulla
+	</button>
+</div>

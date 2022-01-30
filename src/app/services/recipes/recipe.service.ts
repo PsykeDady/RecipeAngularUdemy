@@ -1,4 +1,3 @@
-import { EventEmitter } from "@angular/core";
 import { Ingredient } from "src/app/shared/ingredient.model";
 import { Recipe } from "../../shared/recipe.model";
 
@@ -33,6 +32,16 @@ export class RecipeService{
 		});
 
 		return returned;
+	}
+
+	setRecipe(recipe:Recipe) : void {
+		this._recipes.forEach( v => {
+			if(RecipeService.getLinkName(v.name)==recipe.name) {
+				v.description=recipe.description;
+				v.imgPath=recipe.imgPath;
+				v.ingredients=[...recipe.ingredients];
+			}
+		});
 	}
 
 	static getLinkName(name:string):string{

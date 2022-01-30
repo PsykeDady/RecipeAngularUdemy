@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { RicetteDropdown } from './directives/dropdown.directive';
 import { ShoppingListService } from './services/shopping-list/shopping.list.service';
 import { AppRouting } from './app.routing';
+import { RecipeViewMode } from './recipes/recipe-detail/recipe-view-mode/recipe-view-mode';
+import { RecipeEditMode } from './recipes/recipe-detail/recipe-edit-mode/recipe-edit-mode';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { AppRouting } from './app.routing';
     RecipeListComponent,
     RecipeItemComponent,
     RecipeDetailComponent,
+	RecipeViewMode,
+	RecipeEditMode,
     ShoppingListComponent,
     ShoppingEditComponent,
     PaninoComponent,
