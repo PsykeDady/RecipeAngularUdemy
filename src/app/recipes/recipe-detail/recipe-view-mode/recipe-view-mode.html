@@ -30,8 +30,8 @@
 			<button type="button" class="btn btn-primary dropdown-toggle">Manage Recipe <span class="caret"></span></button>
 			<ul class="dropdown-menu">
 				<li><button (click)="addToShoppingList()">Add Ingredients to Shopping List</button></li>
-				<li><a href="recipes/{{getLinkName()}}?edit=1">Edit Recipe</a></li>
-				<li><a href="#">Delete Recipe</a></li>
+				<li><a [routerLink]="['/recipes',getLinkName()]" [queryParams]="{edit:1}">Edit Recipe</a></li>·
+				<li><a routerLink="#">Delete Recipe</a></li>
 			</ul>
 		</div>
 	</div>

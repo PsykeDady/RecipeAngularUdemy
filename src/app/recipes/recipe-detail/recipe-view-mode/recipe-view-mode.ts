@@ -17,7 +17,6 @@ export class RecipeViewMode {
 	}
 	
 	addToShoppingList():void{
-		console.log(this.recipe.ingredients)
 		if (! this.recipe.ingredients || this.recipe.ingredients.length==0) {
 			alert("no ingredients to add!"); 
 			return;

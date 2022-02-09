@@ -36,12 +36,13 @@ export class RecipeService{
 
 	setRecipe(recipe:Recipe) : void {
 		this._recipes.forEach( v => {
-			if(RecipeService.getLinkName(v.name)==recipe.name) {
+			if(v.name==recipe.name) {
 				v.description=recipe.description;
 				v.imgPath=recipe.imgPath;
 				v.ingredients=[...recipe.ingredients];
 			}
 		});
+		console.log(this._recipes)
 	}
 
 	static getLinkName(name:string):string{

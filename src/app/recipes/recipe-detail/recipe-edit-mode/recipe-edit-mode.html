@@ -39,22 +39,51 @@
 	</div>
 </div>
 
-<div class="input-group" *ngFor="let ingredient of recipe.ingredients; trackBy: trackByFn;">
+<div class="input-group" *ngFor="let ingredient of ingredients; let indice=index; trackBy: trackByFn;">
 	
 	<div class="row">
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-			<input class="form-control" type="number"  value="{{ingredient.qta}}">
+			<input class="form-control" type="number"  value="{{ingredients[indice].qta}}" (input)='cambia($event,indice,"qta")'>
 		</div>
 			
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-				<input class="form-control" type="text"  [defaultValue]="ingredient.name">
+				<input class="form-control" type="text"  [defaultValue]="ingredients[indice].name" (input)='cambia($event,indice,"name")'>
 		</div>
+		<button class="btn btn-danger  col-sm-1 col-md-1 col-lg-1" (click)="removeIngredient(indice)">
+			<i class="fa fa-minus-circle" aria-hidden="true"></i>
+		</button>
 	</div>
 	
 	<div class="row">
 		<br>
 	</div>
 	
+</div>
+
+<div class="row">
+	
+	<span class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+		
+	</span>
+
+	<button class="
+		btn
+		col-xs-1
+		col-sm-1
+		col-md-1
+		col-lg-1
+		col-xs-offset-1
+		col-sm-offset-1
+		col-md-offset-1
+		col-lg-offset-1
+		btn-primary
+		fa fa-plus-circle
+		"
+		aria-hidden="true"
+		(click)="addIngredient()"
+	>
+	</button>
+
 </div>
 
 <br>
