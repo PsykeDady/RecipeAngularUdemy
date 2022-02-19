@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { Router } from "@angular/router";
 import { RecipeService } from "src/app/services/recipes/recipe.service";
 import { ShoppingListService } from "src/app/services/shopping-list/shopping.list.service";
 import { Recipe } from "src/app/shared/recipe.model";
@@ -12,7 +13,7 @@ export class RecipeViewMode {
 	@Input()
 	recipe:Recipe; 
 
-	constructor(private shopping_service : ShoppingListService){
+	constructor(private shopping_service : ShoppingListService, private recipeService: RecipeService, private router: Router){
 
 	}
 	
@@ -33,5 +34,10 @@ export class RecipeViewMode {
 
 	getLinkName():string{
 		return RecipeService.getLinkName(this.recipe.name)
+	}
+
+	removeRecipe() {
+		this.router.navigate(["/recipes"]);
+		this.recipeService.removeRecipe(this.recipe);
 	}
 }

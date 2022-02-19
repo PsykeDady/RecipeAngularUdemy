@@ -45,6 +45,16 @@ export class RecipeService{
 		console.log(this._recipes)
 	}
 
+	removeRecipe(recipe:Recipe){
+		this._recipes= this._recipes.filter( v => { if(v.name!==recipe.name) return v;})
+	}
+
+	addRecipe(recipe : Recipe){
+		let newRecipe :Recipe = new Recipe(recipe.name,recipe.description, recipe.imgPath); 
+		newRecipe.ingredients = recipe.ingredients;
+		this._recipes.push(newRecipe);
+	}
+
 	static getLinkName(name:string):string{
 		return name.replace(/ /g,"_").toLowerCase();
 	}

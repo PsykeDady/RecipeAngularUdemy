@@ -11,4 +11,7 @@ ul>li>*{
 	background-color: transparent;
 	outline: none;
 	border: none;
+	width: 100%;
+	text-align: left;
+	padding: 5%;
 }

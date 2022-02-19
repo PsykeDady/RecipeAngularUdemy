@@ -1,0 +1,23 @@
+@media only screen and (orientation:landscape) {
+	.dettagli {
+		overflow-y: scroll;
+		overflow-x: hidden; 
+		height: var(--centro-h); 
+	}
+	
+	.dettagli::-webkit-scrollbar{
+		width: var(--border-w);
+	}
+	.dettagli::-webkit-scrollbar-track{
+		background-color: transparent;
+	}
+	.dettagli::-webkit-scrollbar-thumb{
+		background-color: transparent;
+	}
+	.dettagli::-webkit-scrollbar-track:hover{
+		background-color: transparent;
+	}
+	.dettagli::-webkit-scrollbar-thumb:hover{
+		background-color: transparent;
+	}
+}

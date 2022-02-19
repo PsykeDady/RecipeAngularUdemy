@@ -8,4 +8,5 @@ import { RecipeService } from 'src/app/services/recipes/recipe.service';
 })
 export class RecipeListComponent   {
 	constructor (public recipe_service: RecipeService){		}
+	
 }

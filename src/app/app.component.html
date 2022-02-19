@@ -1,14 +1,19 @@
-<app-header [active]=tab (choise)="changeTab($event)" *ngIf="!hamburger; else panino">
-</app-header>
 
-<ng-template #panino>
- <app-panino></app-panino>
-</ng-template >
-
-<div class="container">
-  <div class="row">
-	<div class="col-md-12">
+<div class="completo">
+	<div class="alto">
+		<app-header [active]=tab (choise)="changeTab($event)" *ngIf="!hamburger; else panino">
+		</app-header>
+		
+		<ng-template #panino>
+			<app-panino></app-panino>
+		</ng-template >		
+	</div>
+	
+	<div class="centro">
 		<router-outlet></router-outlet>
 	</div>
-  </div>
+	
+	<div class="basso">
+	
+	</div>
 </div>
