@@ -1,21 +1,19 @@
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a href="#" class="navbar-brand">Recipe Book</a>
+			<a href="/" class="navbar-brand">Recipe Book</a>
 		</div>
 
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a 
-						routerLink="recipes"
+				<li *ngFor="let t of tabs">
+					<a 
+						routerLink="{{t.link}}"
 						routerLinkActive="selected"
 						>
-				Recipes</a></li>
-				<li><a 
-						routerLink="shopping"
-						routerLinkActive="selected"
-						>
-				Shopping List</a></li>
+						{{t.name}}
+					</a>
+				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown" appDropdown>

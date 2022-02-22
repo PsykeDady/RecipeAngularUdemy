@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { RoutesService } from '../services/routes/Routes.service';
+import { Tab } from '../shared/Tab';
 
 @Component({
   selector: 'app-header',
@@ -6,4 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+
+	tabs:Tab[]= RoutesService.getRoutes();
+	
+	constructor(){
+		RoutesService.cambiorotte.subscribe(()=>{
+			this.tabs=RoutesService.getRoutes()
+		});
+	}
 }

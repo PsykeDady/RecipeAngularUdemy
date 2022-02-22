@@ -1,12 +1,9 @@
 
 <div class="completo">
 	<div class="alto">
-		<app-header [active]=tab (choise)="changeTab($event)" *ngIf="!hamburger; else panino">
+		<app-header>
+			
 		</app-header>
-		
-		<ng-template #panino>
-			<app-panino></app-panino>
-		</ng-template >		
 	</div>
 	
 	<div class="centro">

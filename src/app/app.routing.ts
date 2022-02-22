@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { NotFoundPage } from "./errors/NotFoundPage/NotFoundPage";
+import { NotFoundsGuard } from "./guards/notfounds.guard";
 import { NewRecipeComponent } from "./recipes/recipe-detail/new-recipe/new-recipe.component";
 import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.component";
 import { RecipesComponent } from "./recipes/recipes.component";
@@ -11,7 +13,9 @@ const appRoutes: Routes = [
 		{path:':name', component: RecipeDetailComponent}
 	]},
 	{path:'shopping', component: ShoppingListComponent},
-	{path:"", redirectTo:'recipes', pathMatch:"full"}
+	{path:"notfound",component: NotFoundPage, canActivate:[NotFoundsGuard], canDeactivate:[NotFoundsGuard]},
+	{path:"", redirectTo:'recipes', pathMatch:"full"},
+	{path:"**", redirectTo:"notfound"}
 ];
 
 

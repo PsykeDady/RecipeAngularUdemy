@@ -7,14 +7,4 @@ import { Choise } from './shared/Choise';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	title = 'ricette';
-	hamburger=false;
-	tab:Choise=Choise.RECIPES;
-	choises=Choise;
-
-
-
-	changeTab(theChoise:Choise) {
-	  this.tab=theChoise;
-	}
 }
