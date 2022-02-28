@@ -42,7 +42,6 @@ export class RecipeService{
 				v.ingredients=[...recipe.ingredients];
 			}
 		});
-		console.log(this._recipes)
 	}
 
 	removeRecipe(recipe:Recipe){

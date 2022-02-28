@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { RoutesService } from '../services/routes/Routes.service';
 import { Tab } from '../shared/Tab';
 

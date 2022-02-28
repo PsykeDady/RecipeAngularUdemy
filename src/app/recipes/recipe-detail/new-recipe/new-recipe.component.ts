@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { EditRecipeGuard } from 'src/app/guards/editrecipe.guard';
 import { RecipeService } from 'src/app/services/recipes/recipe.service';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { Recipe } from 'src/app/shared/recipe.model';
@@ -16,7 +17,7 @@ export class NewRecipeComponent {
 	name: string="";
 	imgpath: string="";
 
-	constructor(private router: Router, private recipeService : RecipeService){
+	constructor(private router: Router, private recipeService : RecipeService, private editRecipeGuards : EditRecipeGuard){
 		
 	}
 	
@@ -29,7 +30,6 @@ export class NewRecipeComponent {
 	}
 
 	removeIngredient(indice:number):void{
-		console.log(indice)
 		this.ingredients=this.ingredients.filter( (v,index) => {
 			if(index!==indice) return v;
 		}
@@ -45,14 +45,10 @@ export class NewRecipeComponent {
 		el.type="file";
 		el.onchange = e => {
 			var file : File = el.files[0];
-			console.log("file.name",file.name)
 			var reader : FileReader = new FileReader();
 			reader.readAsDataURL(file);
 			reader.onload = lettura => {
-				
 				this.imgpath = ""+reader.result;
-				
-				console.log("img path after load=",this.imgpath)
 			} 
 		}
 		
@@ -69,6 +65,8 @@ export class NewRecipeComponent {
 		this.router.navigate(["/recipes", RecipeService.getLinkName(recipe.name)]);
 	}
 	annullaModifiche() {
+		this.editRecipeGuards.flg = this.ingredients.length ===0 && this.description === "" && this.name === "" && this.imgpath === "";
+
 		this.router.navigate(["/recipes"]);
 	}
 

@@ -16,7 +16,7 @@ export class RoutesService {
 	}
 
 	public static addNotFound():void{
-		this._tabs.push(new Tab(TabsEnum["OOPS! D:"],"notfound"));
+		this._tabs.push(Tab.NOTFOUNDTAB);
 		this.cambiorotte.emit();
 	}
 

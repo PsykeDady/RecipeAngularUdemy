@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { EditRecipeGuard } from "src/app/guards/editrecipe.guard";
+import { EditedRecipe } from "src/app/services/recipes/editedRecipes.service";
 import { RecipeService } from "src/app/services/recipes/recipe.service";
 import { Ingredient } from "src/app/shared/ingredient.model";
 import { Recipe } from "src/app/shared/recipe.model";
@@ -13,16 +15,22 @@ export class RecipeEditMode implements OnInit {
 
 	@Input()
 	recipe:Recipe; 
-	ingredients: Ingredient[] = [];
-	newDescription:string;
 	
-	constructor(private recipeService:RecipeService, private router : Router){
+	
+	constructor(
+			private recipeService:RecipeService, 
+			private router : Router, 
+			private editRecipeGuard:EditRecipeGuard,
+			public editedRecipes:EditedRecipe
+	){
 		
 	}
 
 	ngOnInit(): void {
-		this.newDescription = this.recipe.description;
-		this.ingredients =  this.recipe.ingredients;
+		this.editedRecipes.oldRecipe=this.recipe;
+		this.editedRecipes.newRecipe=new Recipe(this.recipe.name,this.recipe.description, this.recipe.imgPath,null);
+		this.editedRecipes.newRecipe.ingredients=this.recipe.ingredients;
+
 	}
 
 	changeImage(){
@@ -35,36 +43,32 @@ export class RecipeEditMode implements OnInit {
 
 	salvaModifiche() :void{
 		
-		this.recipe.description=this.newDescription;
-		
-		this.recipe.ingredients = this.ingredients; 
-		
-		this.recipeService.setRecipe(this.recipe);
+		this.recipeService.setRecipe(this.editedRecipes.newRecipe);
 
 		this.router.navigate(["/recipes", RecipeService.getLinkName(this.recipe.name)]);
 	}
 
 	addIngredient(){
-		this.ingredients.push(new Ingredient("",0));
+		this.editedRecipes.newRecipe.ingredients.push(new Ingredient("",0));
 	}
 
 	removeIngredient(indice:number):void{
-		this.ingredients=this.ingredients.filter( (v,index) => {
+		this.editedRecipes.newRecipe.ingredients=this.editedRecipes.newRecipe.ingredients.filter( (v,index) => {
 			if(index!=indice) return v;
 		}
 		)
 	}
 
 	annullaModifiche() {
-		this.router.navigate(["/recipes", RecipeService.getLinkName(this.recipe.name)]);
+		this.router.navigate(["/recipes"]);
 	}
 
 	cambia(e:Event, i:number, qtaOrName:string):void {
 		let val:any=(e.target as HTMLInputElement).value
 		if(qtaOrName==="name"){
-			this.ingredients[i].name =  val;
+			this.editedRecipes.newRecipe.ingredients[i].name =  val;
 		} else {
-			this.ingredients[i].qta = val;
+			this.editedRecipes.newRecipe.ingredients[i].qta = val;
 		}
 	}
 	

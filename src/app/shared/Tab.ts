@@ -1,6 +1,9 @@
 import { TabsEnum } from "./Tabs.enum";
 
 export class Tab {
+
+	public static readonly NOTFOUNDTAB : Tab = new Tab(TabsEnum["OOPS! D:"],"notfound")
+
 	private _name:string; 
 	private _link:string; 
 

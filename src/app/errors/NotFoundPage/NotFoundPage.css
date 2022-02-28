@@ -1,0 +1,3 @@
+img{
+	width: calc(var(--c-w-r)*30/100);
+}
