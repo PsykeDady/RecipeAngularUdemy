@@ -17,7 +17,7 @@ export class RecipesGuard implements CanActivate {
 	canActivate(
 		route: ActivatedRouteSnapshot,
 		state: RouterStateSnapshot
-	):
+	): 
 		|	boolean
 		|	UrlTree
 		|	Observable<boolean | UrlTree>
