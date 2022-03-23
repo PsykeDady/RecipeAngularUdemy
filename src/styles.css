@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+
+.text-blur{
+	text-shadow: 0px 0px 0.5vw var(--lighter-accent-color);
+}
+
+.text-blur-more{
+	text-shadow: 0px 0px 0.8vw var(--accent-color);
+	color: var(--darker-accent-color);
+}
+
+* {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	scrollbar-color: transparent transparent;
+  	scrollbar-width: thin;
+}
+
+*::-moz-focus-inner{
+	outline: 0 !important;
+	border:0;
+}
+*::-webkit-scrollbar{
+	width: var(--border-w);
+}
+*::-webkit-scrollbar-track{
+	background-color: transparent;
+}
+*::-webkit-scrollbar-thumb{
+	background-color: transparent;
+}
+*::-webkit-scrollbar-track:hover{
+	background-color: transparent;
+}
+*::-webkit-scrollbar-thumb:hover{
+	background-color: transparent;
+}

@@ -1,0 +1,32 @@
+#dettaglioRicetta{
+	height: var(--center-ricetta-h);
+	overflow-y: scroll;
+}
+
+#pulsanteGestione{
+	background-color: var(--lighter-accent-color);
+}
+
+.qta{
+	background-color: gray;
+}
+
+*::-moz-focus-inner{
+	outline: 0 !important;
+	border:0;
+}
+*::-webkit-scrollbar{
+	width: var(--border-w);
+}
+*::-webkit-scrollbar-track{
+	background-color: transparent;
+}
+*::-webkit-scrollbar-thumb{
+	background-color: transparent;
+}
+*::-webkit-scrollbar-track:hover{
+	background-color: transparent;
+}
+*::-webkit-scrollbar-thumb:hover{
+	background-color: black;
+}

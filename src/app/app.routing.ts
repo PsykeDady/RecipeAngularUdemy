@@ -1,23 +1,23 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { NotFoundPage } from "./errors/NotFoundPage/NotFoundPage";
-import { NotFoundsGuard } from "./guards/notfounds.guard";
-import { NewRecipeComponent } from "./recipes/recipe-detail/new-recipe/new-recipe.component";
-import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.component";
-import { RecipesComponent } from "./recipes/recipes.component";
-import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
+import { IngredientsGuard } from "src/guards/ingredients.guard";
+import { NotFoundsGuard } from "src/guards/notfounds.guard";
+import { RecipesGuard } from "src/guards/recipes.guard";
+import { RicettaComponent } from "./centro/ricette/ricetta/ricetta.component";
+import { RicetteComponent } from "./centro/ricette/ricette.component";
+import { ShoppingListComponent } from "./centro/shopping-list/shopping-list.component";
+import { NotFoundComponent } from "./errors/not-found/not-found.component";
 
-const appRoutes: Routes = [
-	{path:'recipes', component: RecipesComponent, children: [
-		{path:'newRecipe', component: NewRecipeComponent},
-		{path:':name', component: RecipeDetailComponent}
+const appRoutes : Routes =  [ 
+	{path:"recipes", component: RicetteComponent, children:[
+		{path:":name", component:RicettaComponent, canActivate:[RecipesGuard], canDeactivate:[RecipesGuard]}
 	]},
-	{path:'shopping', component: ShoppingListComponent},
-	{path:"notfound",component: NotFoundPage, canActivate:[NotFoundsGuard], canDeactivate:[NotFoundsGuard]},
-	{path:"", redirectTo:'recipes', pathMatch:"full"},
+	{path:"shopping", component: ShoppingListComponent, canActivate:[IngredientsGuard], canDeactivate:[IngredientsGuard]},
+	{path:"notfound",component: NotFoundComponent, canActivate:[NotFoundsGuard], canDeactivate:[NotFoundsGuard]},
+	{path:"", redirectTo:"recipes", pathMatch:"full"},
 	{path:"**", redirectTo:"notfound"}
-];
 
+]; 
 
 @NgModule({
 	declarations:[],
@@ -28,5 +28,5 @@ const appRoutes: Routes = [
 	exports:[RouterModule]
 })
 export class AppRouting {
-
+	
 }

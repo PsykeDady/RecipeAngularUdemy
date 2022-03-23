@@ -1,0 +1,59 @@
+<div class="container" id="add-ingredients">
+	<div class="row">
+		<div class="
+			col-12
+			col-md-6 
+		">
+			<div class="p-2">
+				<input 
+					type="text" 
+					class="form-control" 
+					name="" 
+					id="" 
+					aria-describedby="labelname" 
+					[(ngModel)]="ingredient.name"
+					[disabled]="editMode()"
+				>
+				<small id="labelname" class="form-text text-blur">Name</small>
+			</div>
+		</div>
+		<div class="
+			col-12
+			offset-0
+			col-md-4 
+			offset-md-2
+		">
+			<div class="p-2">
+				<input
+					type="number"
+					class="form-control"
+					name=""
+					id=""
+					aria-describedby="labelqta"
+					min="1"
+					max="99"
+					[(ngModel)]="ingredient.qta"
+				>
+			  <small id="labelqta" class="form-text text-blur">Qta</small>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-5 col-md-2 offset-md-1 mb-1 p-1" [ngClass]="editMode()?'col-5 ':'col-12'">
+			<button class="btn btn-secondary col-12 mb-1" (click)="pulisci()">
+				Pulisci
+			</button>
+		</div>
+		<div *ngIf="editMode()" class="col-5 offset-2 offset-md-1 col-md-2 p-1">
+			<button class="btn btn-danger col-12 mb-1" (click)="cancella()">
+				Cancella
+			</button>
+		</div>
+		<div class="col-12 offset-0 col-md-2 offset-md-1 p-1">
+			<button class="btn btn-success col-12" (click)="salva()">
+				{{editMode()?"Modifica":"Salva"}}
+			</button>
+		</div>
+	</div>
+</div>

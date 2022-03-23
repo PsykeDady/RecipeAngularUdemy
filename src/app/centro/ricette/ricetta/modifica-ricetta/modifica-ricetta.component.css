@@ -1,0 +1,39 @@
+#modificaRicetta{
+	height: var(--center-ricetta-h);
+	overflow-y: scroll;
+	scrollbar-color: black trasparent;
+}
+
+
+button#adding{
+	background-color: var(--darker-accent-color);
+	color: var(--main-bg-color);
+}
+
+.qta{
+	background-color: gray;
+}
+
+#ldescrizione{
+	color: var(--unactive-color);
+}
+
+*::-moz-focus-inner{
+	outline: 0 !important;
+	border:0;
+}
+*::-webkit-scrollbar{
+	width: var(--border-w);
+}
+*::-webkit-scrollbar-track{
+	background-color: transparent;
+}
+*::-webkit-scrollbar-thumb{
+	background-color: transparent;
+}
+*::-webkit-scrollbar-track:hover{
+	background-color: transparent;
+}
+*::-webkit-scrollbar-thumb:hover{
+	background-color: black;
+}

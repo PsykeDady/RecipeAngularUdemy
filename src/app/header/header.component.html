@@ -1,29 +1,28 @@
-<nav class="navbar navbar-default">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a href="/" class="navbar-brand">Recipe Book</a>
-		</div>
-
-		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li *ngFor="let t of tabs">
+<nav class="navbar navbar-expand navbar-light" id="alto-interno">
+	<div class="container-fluid"  *ngIf="menu_visibile">
+		<a class="navbar-brand fa fa-book titolo" id="logo" routerLink="/">
+			<span>Ricette</span>
+		</a>
+		<div class="collapse navbar-collapse" id="routesmenu">
+			<ul class="navbar-nav me-auto">
+				<li class="nav-item" *ngFor="let t of tabs">
 					<a 
-						routerLink="{{t.link}}"
-						routerLinkActive="selected"
-						>
-						{{t.name}}
-					</a>
+						class="nav-link" 
+						aria-current="page" 
+						[routerLink]="t.link"
+						routerLinkActive="active selected"
+					>{{t.name}}</a>
 				</li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown" appDropdown>
-					<a href="#" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Save Data</a></li>
-						<li><a href="#">Fetch Data</a></li>
-					</ul>
-				</li>
-			</ul>
+			<img
+				class="img-thumbnail img-rounded" 
+				src="assets/hamburger_close.png" 
+				alt="hamburger_close"
+				id="hamburger"
+
+				[ngClass]="{'hamburger-press':ham_pressed,'hamburger-norm':!ham_pressed }"
+				(mousedown)="hamFlag()" (mouseup)="hamFlag()"
+			>
 		</div>
 	</div>
 </nav>

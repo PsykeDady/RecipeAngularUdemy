@@ -1,0 +1,25 @@
+@media screen and (orientation:portrait) {
+	* {
+		--center-lista-r-h  : calc(var(--centro-h) * 50 / 100);
+		--center-ricetta-h: calc(var(--centro-h) * 50 / 100);
+	}
+}
+
+@media screen and (orientation:landscape) {
+	* {
+		--center-lista-r-h  : calc(var(--centro-h) * 98 / 100);
+		--center-ricetta-h: calc(var(--centro-h) * 98 / 100);
+	}
+	#lista{
+		border-right: 0.01vw solid lightgray;
+	}
+}
+
+#lista{
+	height: var(--center-lista-r-h);
+}
+
+#dettaglio-ricetta{
+	height: var(--center-ricetta-h);
+}
+

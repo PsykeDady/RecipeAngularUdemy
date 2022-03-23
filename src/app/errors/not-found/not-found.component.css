@@ -1,0 +1,33 @@
+h2{
+	height: calc(var(--c-h) * 1 / 10);
+	width: calc(var(--c-w-r) * 8 / 10);
+	margin-left: calc(var(--c-w-r) * 1 / 10);
+	font-size: calc(var(--c-w-r) * 0.4 / 10);
+}
+
+img{
+	height     : calc(var(--c-h  ) * 45 / 100);
+	width      : calc(var(--c-h  ) * 45 / 100);
+	margin-top : calc(var(--c-h  ) * 2  / 100);
+	margin-left: calc(var(--c-w-r) * 1 / 10);
+}
+
+figcaption{
+	height: calc(var(--c-h)* 2 / 10);
+	width: calc(var(--c-w-r) * 50 /100);
+	margin-left: calc(var(--c-w-r) * 1 / 10);
+}
+
+@media screen and (orientation:landscape) {
+	h2{
+		margin-left: calc(var(--c-w-r) * 1 / 10);
+		font-size: calc(var(--c-h) * 0.4 / 10);
+	}
+	img {
+		margin-left: calc(var(--c-w-r) * 25 / 100);
+	}
+	figcaption{
+		margin-left: calc(var(--c-w-r) * 25 / 100);
+	}
+}
+

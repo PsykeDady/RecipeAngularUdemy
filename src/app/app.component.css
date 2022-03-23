@@ -1,18 +1,31 @@
 * {
-	--c-w: 99vw;
-	--c-h: 98vh;
+	/*WIDTH*/
+	--c-w: 98vw;
+	--c-h: 97vh;
 
 	--border-w : 0.1vw;
 	--margin-w : 0.5vw; 
+	--margin-w-r : 0.9vw; 
 
 	--c-w-r: calc(var(--c-w) - (var(--border-w) * 2));
 
+	/* COLORS */
+	--main-bg-color:		white;
+	--main-fg-color:		black;
+	--accent-color:			#9fa8da;		/* 200 indigo */
+	--darker-accent-color: 	#6f79a8;
+	--lighter-accent-color:	#d1d9ff;
+	--unactive-color:		#b4b8c1;		/* 100 indigo dark */
+	--logo-color: 			var(--darker-accent-color);
+	--border-color: 		var(--unactive-color);
+
 	/*alto*/
-	--alto-h : calc(var(--c-h) * 10 / 100);
+	--alto-h : calc(var(--c-h) * 7 / 100);
 	--alto-w : var(--c-w-r);
+	--alto-margins:calc(var(--alto-h) * 15 / 100 );
 
 	/*basso*/ 
-	--basso-h : var(--alto-h);
+	--basso-h :calc(var(--c-h) * 0 / 1000);
 	--basso-w : var(--c-w-r);
 
 	/*centro*/
@@ -21,6 +34,9 @@
 
 	width: var(--c-w-r);
 	height: var(--c-h);
+
+	/*BORDER*/
+	--border-complete: var(--border-w) solid var(--border-color);
 
 	/*KEYBOARD EVENT*/
 	-webkit-touch-callout: none;
@@ -34,58 +50,52 @@
 	z-index: inherit;
 }
 
+@media screen and (orientation:landscape){
+	*{
+		--alto-font-size: calc(var(--alto-h) * 25 / 100);
+	}	
+}
+
+@media screen and (orientation:portrait){
+	*{
+		--c-h: 90vh;
+		--alto-font-size: calc(var(--alto-h) * 20 / 100);
+	}
+}
+
+body{
+	background-color: var(--main-fg-color);
+}
+
 .completo{
 	height: var(--c-h);
-	width: var(--c-w);
-	margin-left: var(--margin-w);
-	margin-top: var(--margin-w);
-	border: var(--border-w) solid whitesmoke;
-	border-radius: var(--margin-w);
+	width: var(--c-w-r);
+	left: var(--margin-w);
+	top: var(--margin-w);
+	position: absolute;
+	
 }
 
 .alto {
 	height: var(--alto-h);
 	width: var(--alto-w);
-	overflow-y: hidden;
-	overflow-x: hidden;
+	
 }
 
 .centro{
+	left: 0;
+	top:  var(--alto-h) ;
+	position: absolute;
 	height: var(--centro-h);
 	width: var(--centro-w);
-	overflow-y: scroll;
-	overflow-x: hidden;
+
 }
 
 .basso {
-	background-color: whitesmoke;
+	left: 0;
+	top: calc(var(--centro-h) + var(--alto-h)) ;
+	position: absolute;
+	background-color: var(--lighter-accent-color);
 	height: var(--basso-h);
 	width: var(--basso-w);
-	border-radius: var(--margin-w);
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
-	overflow-y: hidden;
-	overflow-x: hidden;
-}
-
-
-*::-moz-focus-inner{
-	outline: 0 !important;
-	border:0;
-}
-
-*::-webkit-scrollbar{
-	width: var(--border-w);
-}
-*::-webkit-scrollbar-track{
-	background-color: transparent;
-}
-*::-webkit-scrollbar-thumb{
-	background-color: transparent;
-}
-*::-webkit-scrollbar-track:hover{
-	background-color: transparent;
-}
-*::-webkit-scrollbar-thumb:hover{
-	background-color: transparent;
 }

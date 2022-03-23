@@ -1,21 +1,52 @@
+#alto-interno{
+	background-color: var(--lighter-accent-color) ;
+	border-radius: var(--margin-w);
+	height: 100%;
+}
+
+#logo{
+	color: var(--logo-color);
+}
+
+nav {
+	padding: 0;
+	padding-top: var(--alto-margins);
+}
+.titolo, .titolo>span{
+	color: black;
+	font-weight: bolder;
+	font-size: var(--alto-font-size);
+}
+
 li {
 	border: 0;
 	background-color: transparent;
-	font-weight: bold;
 	color: lightgrey;
-  }
-  li:hover {
+	font-size: var(--alto-font-size);
+}
+li:hover {
 	color: grey;
-  }
-  .selected {
-	color: black;
+}
+.selected {
 	text-shadow: 0 0 2px lightslategrey;
-  }
-  .selected:hover {
-	color: black;
-  }
+}
   
-  *,*:focus,*:hover, *:active, .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
+*,*:focus,*:hover, *:active, .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
 	  outline:none;
-  }
-	
+}
+
+#hamburger{
+	width: calc(var(--alto-font-size) * 25 / 10);
+	border-radius: var(--margin-w);
+	animation: all cubic-bezier(0, 1, 1, 0);
+	background-color: var(--lighter-accent-color);
+}
+
+.hamburger-press {
+	border: var(--border-w) var(--darker-accent-color) inset;
+	background-color: white;
+}
+
+.hamburger-norm {
+	border: none;
+}

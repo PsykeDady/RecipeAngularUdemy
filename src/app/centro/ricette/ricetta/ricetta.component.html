@@ -1,0 +1,7 @@
+<span *ngIf="editMode; else view">
+  <app-modifica-ricetta></app-modifica-ricetta>
+</span>
+
+<ng-template #view>
+  <app-dettaglio-ricetta></app-dettaglio-ricetta>
+</ng-template>

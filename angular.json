@@ -23,9 +23,9 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-			  "node_modules/fork-awesome/css/fork-awesome.min.css",
-              "src/styles.css"
+              "src/styles.css",
+			  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+			  "node_modules/fork-awesome/css/fork-awesome.min.css"
             ],
             "scripts": []
           },

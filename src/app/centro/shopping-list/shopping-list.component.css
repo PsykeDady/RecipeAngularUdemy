@@ -1,0 +1,13 @@
+@media screen and (orientation:portrait) {
+	* {
+		--center-add-i-h: calc(var(--centro-h) * 43 / 100);
+		--center-lista-i-h  : calc(var(--centro-h) * 48 / 100);
+	}
+}
+
+@media screen and (orientation:landscape) {
+	* {
+		--center-add-i-h: calc(var(--centro-h) * 20 / 100);
+		--center-lista-i-h  : calc(var(--centro-h) * 75 / 100);
+	}
+}

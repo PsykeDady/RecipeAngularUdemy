@@ -1,0 +1,12 @@
+li:hover#iname{
+	background-color: var(--lighter-accent-color);
+}
+
+span#qta{
+	color: var(--main-bg-color);
+	background-color: var(--unactive-color);
+}
+
+#shopping-ingredient-list{
+	height: var(--center-lista-i-h);
+}

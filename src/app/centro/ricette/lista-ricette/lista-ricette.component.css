@@ -1,0 +1,47 @@
+@media screen and (orientation:portrait) {
+	*{
+		--img-w : calc(var(--center-lista-r-h) * 15 / 100);
+	}
+}
+
+@media screen and (orientation:landscape) {
+	*{
+		--img-w : calc(var(--center-lista-r-h) * 10 / 100);
+	}
+}
+.selected {
+	box-shadow: 0px 0px 5vw var(--lighter-accent-color) inset;
+}
+
+img {
+	max-height: var(--img-w);
+	max-width: var(--img-w);
+	
+}
+
+#ricette{
+	overflow-y: scroll; 
+	scrollbar-color: transparent transparent;
+	scrollbar-width: thin;
+	height: calc(var(--center-lista-r-h) * 70 / 100);
+}
+
+*::-moz-focus-inner{
+	outline: 0 !important;
+	border:0;
+}
+*::-webkit-scrollbar{
+	width: var(--border-w);
+}
+*::-webkit-scrollbar-track{
+	background-color: transparent;
+}
+*::-webkit-scrollbar-thumb{
+	background-color: transparent;
+}
+*::-webkit-scrollbar-track:hover{
+	background-color: transparent;
+}
+*::-webkit-scrollbar-thumb:hover{
+	background-color: black;
+}

@@ -1,20 +1,26 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { RoutesService } from '../services/routes/Routes.service';
-import { Tab } from '../shared/Tab';
+import { Component, OnInit } from '@angular/core';
+import { Tab } from 'src/models/Tab.model';
+import { RoutesService } from 'src/services/static/Routes.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent{
 
-	tabs:Tab[]= RoutesService.getRoutes();
-	
+	tabs:Tab[] = RoutesService.getRoutes();
+	menu_visibile:boolean = true;
+	ham_pressed:boolean = false;
+
 	constructor(){
 		RoutesService.cambiorotte.subscribe(()=>{
 			this.tabs=RoutesService.getRoutes()
 		});
 	}
+
+	hamFlag(){
+		this.ham_pressed=!this.ham_pressed;
+	}
+
 }
