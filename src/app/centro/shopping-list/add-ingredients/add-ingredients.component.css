@@ -2,12 +2,14 @@
 @media screen and (orientation: portrait) {
 	*{
 		/* -- WIDTH -- */
-		--add-i-inputs-w      : calc(var(--center-add-i-w) * 95 / 100);
+		--add-i-inputs-text-w : calc(var(--center-add-i-w) * 95 / 100);
+		--add-i-inputs-numb-w : var(--add-i-inputs-text-w);
 		--add-i-pulsanti-md-w : calc(var(--center-add-i-w) * 45 / 100);
 		--add-i-pulsanti-lg-w : calc(var(--center-add-i-w) * 95 / 100);
 
 		/* -- LEFT --*/
-		--add-i-inputs-left      : calc((var(--center-add-i-w) - var(--add-i-inputs-w))/2 - var(--margin-w) - var(--margin-w));
+		--add-i-inputs-text-left : calc((var(--center-add-i-w) - var(--add-i-inputs-text-w))/2 - var(--margin-w) - var(--margin-w));
+		--add-i-inputs-numb-left : var(--add-i-inputs-text-left);
 		--add-i-pulsanti-md-left : var(--add-i-pulsanti-lg-left);
 		--add-i-pulsanti-lg-left : calc((var(--center-add-i-w) - var(--add-i-pulsanti-lg-w))/2 - var(--margin-w) - var(--margin-w));
 		
@@ -17,36 +19,53 @@
 @media screen and (orientation: landscape) {
 	*{
 		/* -- WIDTH -- */
-		--add-i-inputs-w      : calc(var(--center-add-i-w) * 40 / 100);
+		--add-i-inputs-text-w : calc(var(--center-add-i-w) * 55 / 100);
+		--add-i-inputs-numb-w : calc(var(--center-add-i-w) * 25 / 100);
 		--add-i-pulsanti-md-w : calc(var(--center-add-i-w) * 25 / 100);
 		--add-i-pulsanti-lg-w : calc(var(--center-add-i-w) * 25 / 100);
 
 		/* -- LEFT --*/
-		--add-i-inputs-left      : calc((var(--center-add-i-w) - var(--add-i-inputs-w))/2 - var(--margin-w) - var(--margin-w));
-		--add-i-pulsanti-md-left : calc(var(--center-add-i-w) * 25 / 100);
-		--add-i-pulsanti-lg-left : calc(var(--center-add-i-w) * 25 / 100);
+		--add-i-inputs-text-left : calc(var(--center-add-i-w) * 2 / 100);
+		--add-i-inputs-numb-left : calc(var(--center-add-i-w) * 4 / 100);
+		--add-i-pulsanti-md-left : calc(var(--center-add-i-w) * 2 / 100);
+		--add-i-pulsanti-lg-left : calc(var(--center-add-i-w) * 2 / 100);
 		
 	}
 }
 
 
-.campiInput{
-	width       : var(--add-i-inputs-w);
-	margin-left : var(--add-i-inputs-left);
+.campiInputText{
+	width       : var(--add-i-inputs-text-w);
+	margin-left : var(--add-i-inputs-text-left);
 
 	display: inline-block;
+}
+
+.campiInputNumb{
+	width       : var(--add-i-inputs-numb-w);
+	margin-left : var(--add-i-inputs-numb-left);
+
+	display: inline-block;
+}
+
+.campiInput>*{
+	display: inline;
 }
 
 .pulsanti-medi{
-	width      : var(--add-i-pulsanti-md-w   );
-	margin-left: var(--add-i-pulsanti-md-left);
-
 	display: inline-block;
 }
 
+.pulsanti-medi>button{
+	width      : var(--add-i-pulsanti-md-w   );
+	margin-left: var(--add-i-pulsanti-md-left);
+}
+
 .pulsanti-larghi{
+	display: inline-block;
+}
+
+.pulsanti-larghi > button{
 	width      : var(--add-i-pulsanti-lg-w   );
 	margin-left: var(--add-i-pulsanti-lg-left);
-
-	display: block;
 }

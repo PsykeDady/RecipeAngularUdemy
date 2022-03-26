@@ -1,7 +1,7 @@
-<div class="p-2">
+<div class="p-2 campiInputText">
 	<input 
 		type="text" 
-		class="form-control campiInput" 
+		class="form-control" 
 		name="" 
 		id="" 
 		aria-describedby="labelname" 
@@ -11,10 +11,10 @@
 	<small id="labelname" class="form-text text-blur">Name</small>
 </div>
 
-<div class="p-2">
+<div class="p-2 campiInputNumb">
 	<input
 		type="number"
-		class="form-control campiInput"
+		class="form-control"
 		name=""
 		id=""
 		aria-describedby="labelqta"
@@ -25,18 +25,18 @@
 	<small id="labelqta" class="form-text text-blur">Qta</small>
 </div>
 
-<div class="p-2" style="display: inline-block;">
-	<button class="btn btn-secondary pulsanti-medi" (click)="pulisci()">
+<div class="p-2" [ngClass]="editMode()?'pulsanti-medi':'pulsanti-larghi'">
+	<button class="btn btn-secondary" (click)="pulisci()">
 		Pulisci
 	</button>
 </div>
-<div *ngIf="editMode()" class="p-2" style="display: inline-block;">
-	<button class="btn btn-danger pulsanti-medi" (click)="cancella()">
+<div *ngIf="editMode()" class="p-2 pulsanti-medi">
+	<button class="btn btn-danger" (click)="cancella()">
 		Cancella
 	</button>
 </div>
-<div class="p-2">
-	<button class="btn btn-success pulsanti-larghi" (click)="salva()">
+<div class="p-2 pulsanti-larghi">
+	<button class="btn btn-success" (click)="salva()">
 		{{editMode()?"Modifica":"Salva"}}
 	</button>
 </div>
