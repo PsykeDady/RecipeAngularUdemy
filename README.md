@@ -10,6 +10,8 @@
     - [x] edit ingredients
     - [x] new ingredients
   - [x] lists ingredients
+
+  - [ ] CHECK task: address bar into mobile devices
 ## FIX 
 
 - inserire responso visivo (rosso) su campi testo e campi numerici
