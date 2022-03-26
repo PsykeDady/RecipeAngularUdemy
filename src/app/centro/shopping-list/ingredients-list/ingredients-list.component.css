@@ -7,6 +7,11 @@ span#qta{
 	background-color: var(--unactive-color);
 }
 
-#shopping-ingredient-list{
+.lista-ingredienti{
+	--last-element : 5vh;
 	height: var(--center-lista-i-h);
+	width : var(--center-lista-i-w);
+	overflow-y: scroll;
+
+	padding-bottom: var(--last-element);
 }

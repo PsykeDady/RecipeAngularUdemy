@@ -1,4 +1,4 @@
-<div class="container-fluid overflow-auto" id="shopping-ingredient-list">
+<div class="lista-ingredienti">
 	<ul class="list-group list-group-flush">
 		<li class="list-group-item d-flex justify-content-between align-items-center"  id="iname" *ngFor="let ingredient of ingredientService.shopping_list" (click)="sendEdit(ingredient)">
 			{{ingredient.name}}
@@ -6,3 +6,4 @@
 		</li>
 	</ul>
 </div>
+	

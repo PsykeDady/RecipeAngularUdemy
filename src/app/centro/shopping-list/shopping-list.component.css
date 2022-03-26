@@ -6,7 +6,7 @@
 		--center-lista-i-w : calc(var(--centro-w) * 100 / 100);
 		/* HEIGHT */
 		--center-add-i-h   : calc(var(--centro-h) *  46 / 100);
-		--center-lista-i-h : calc(var(--centro-h) - var(--center-add-i-h));
+		--center-lista-i-h : calc(var(--centro-h) - var(--center-add-i-h - var(--margin-w) - var(--margin-w)));
 	}
 }
 

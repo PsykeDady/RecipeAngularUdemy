@@ -38,6 +38,9 @@
 	/*BORDER*/
 	--border-complete: var(--border-w) solid var(--border-color);
 
+	/*others*/
+	--padding-address-bar : 5vh;
+
 	/*KEYBOARD EVENT*/
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
