@@ -1,13 +1,33 @@
+/* -- MOBILE -- */
 @media screen and (orientation:portrait) {
 	* {
-		--center-add-i-h: calc(var(--centro-h) * 43 / 100);
-		--center-lista-i-h  : calc(var(--centro-h) * 48 / 100);
+		/* WIDTH */
+		--center-add-i-w   : calc(var(--centro-w) * 100 / 100);
+		--center-lista-i-w : calc(var(--centro-w) * 100 / 100);
+		/* HEIGHT */
+		--center-add-i-h   : calc(var(--centro-h) *  43 / 100);
+		--center-lista-i-h : calc(var(--centro-h) *  48 / 100);
 	}
 }
 
+/* -- DESKTOP -- */
 @media screen and (orientation:landscape) {
 	* {
-		--center-add-i-h: calc(var(--centro-h) * 20 / 100);
-		--center-lista-i-h  : calc(var(--centro-h) * 75 / 100);
+		/* WIDTH */
+		--center-add-i-w   : calc(var(--centro-w) * 100 / 100);
+		--center-lista-i-w : calc(var(--centro-w) * 100 / 100);
+		/* HEIGHT */
+		--center-add-i-h   : calc(var(--centro-h) *  20 / 100);
+		--center-lista-i-h : calc(var(--centro-h) *  75 / 100);
 	}
+}
+
+#centro-ingredients-add{
+	width : var(--center-add-i-w);
+	height: var(--center-add-i-h);
+}
+
+#centro-lista-i{
+	width : var(--center-lista-i-w);
+	height: var(--center-lista-i-h);
 }

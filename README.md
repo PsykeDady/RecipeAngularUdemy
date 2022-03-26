@@ -1,5 +1,15 @@
 # Ricette
 
+## FIX (branch UI/viewport)
+- [x] recipes
+  - [x] recipes-list
+  - [x] recipes-details
+  - [x] recipe-details (new)
+- [ ] shopping list
+  - [ ] add ingredients
+    - [ ] edit ingredients
+    - [ ] new ingredients
+  - [ ] lists ingredients
 ## FIX 
 
 - inserire responso visivo (rosso) su campi testo e campi numerici

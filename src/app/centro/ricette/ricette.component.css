@@ -1,12 +1,24 @@
+/* -- MOBILE -- */
 @media screen and (orientation:portrait) {
 	* {
-		--center-lista-r-h  : calc(var(--centro-h) * 50 / 100);
-		--center-ricetta-h: calc(var(--centro-h) * 50 / 100);
+		/* -- WIDTH -- */
+		--center-lista-r-w : calc(var(--centro-w) * 100 / 100);
+		--center-ricetta-w : calc(var(--centro-w) * 100 / 100);
+		
+		/* -- HEIGHT -- */
+		--center-lista-r-h : calc(var(--centro-h) *  45 / 100);
+		--center-ricetta-h : calc(var(--centro-h) *  55 / 100);
 	}
 }
 
+/* -- DESKTOP -- */
 @media screen and (orientation:landscape) {
 	* {
+		/* -- WIDTH -- */
+		--center-lista-r-w : calc(var(--centro-w) * 40 / 100);
+		--center-ricetta-w : calc(var(--centro-w) * 58 / 100);
+		
+		/* -- HEIGHT -- */
 		--center-lista-r-h  : calc(var(--centro-h) * 98 / 100);
 		--center-ricetta-h: calc(var(--centro-h) * 98 / 100);
 	}
@@ -17,9 +29,13 @@
 
 #lista{
 	height: var(--center-lista-r-h);
+	width: var(--center-lista-r-w);
+	display: inline-block;
 }
 
 #dettaglio-ricetta{
 	height: var(--center-ricetta-h);
+	width: var(--center-ricetta-w);
+	display: inline-block;
 }
 
