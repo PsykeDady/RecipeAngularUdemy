@@ -60,14 +60,25 @@ export class ModificaRicettaComponent  {
 	}
 
 	cambia(e:Event, i:number, qtaOrName:string):void {
-		let val:string=(e.target as HTMLInputElement).value
+		let val:string=(e.target as HTMLInputElement).value;
+		let style=(e.target as HTMLInputElement).style;
 		let ingredient: Ingredient = this.recipe.ingredients[i];
 		if(qtaOrName==="name"){
 			ingredient.name =  val;
+			if(ingredient.name==""){
+				style.color="white"
+				style.backgroundColor="red"
+			} else {
+				style.cssText=""
+			}
 		} else {
 			let intval=parseInt(val)
 			if(intval>0) {
 				ingredient.qta = intval;
+				style.cssText=""
+			} else {
+				style.color="white"
+				style.backgroundColor="red"
 			}
 		}
 		this.recipe.ingredients = this.recipe.ingredients.map((v,ind)=>{
@@ -79,7 +90,11 @@ export class ModificaRicettaComponent  {
 	}
 
 	salvaModifiche():void{
-
+		this.recipe.ingredients.forEach(ing=>{
+			if(ing.name==""){
+				alert("un ingrediente non può non avere nome!")
+			}
+		})
 		let recipeFound:Recipe=this.recipeService.getRecipeByName(this.recipe.name);
 		if(recipeFound){
 			this.recipeService.setRecipe(this.recipe);
