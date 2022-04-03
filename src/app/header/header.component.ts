@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Tab } from 'src/models/Tab.model';
 import { RoutesService } from 'src/services/static/Routes.service';
 
@@ -13,7 +14,7 @@ export class HeaderComponent{
 	menu_visibile:boolean = true;
 	ham_pressed:boolean = false;
 
-	constructor(){
+	constructor(public router:Router){
 		RoutesService.cambiorotte.subscribe(()=>{
 			this.tabs=RoutesService.getRoutes()
 		});
@@ -21,6 +22,11 @@ export class HeaderComponent{
 
 	hamFlag(){
 		this.ham_pressed=!this.ham_pressed;
+	}
+
+	indietro():void{
+		let croute = this.router.url.split("/");
+		this.router.navigate(croute.splice(0,1))
 	}
 
 }

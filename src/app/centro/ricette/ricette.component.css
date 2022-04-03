@@ -1,31 +1,47 @@
-/* -- MOBILE -- */
-@media screen and (orientation:portrait) {
-	* {
-		/* -- WIDTH -- */
-		--center-lista-r-w : calc(var(--centro-w) * 100 / 100);
-		--center-ricetta-w : calc(var(--centro-w) * 100 / 100);
-		
-		/* -- HEIGHT -- */
-		--center-lista-r-h : calc(var(--centro-h) *  45 / 100);
-		--center-ricetta-h : calc(var(--centro-h) *  55 / 100);
-	}
-}
-
-/* -- DESKTOP -- */
-@media screen and (orientation:landscape) {
-	* {
-		/* -- WIDTH -- */
+/* DESKTOP */
+@media screen and (orientation:landscape) and (height>400px) {
+	/*LISTA*/*{
 		--center-lista-r-w : calc(var(--centro-w) * 40 / 100);
-		--center-ricetta-w : calc(var(--centro-w) * 58 / 100);
-		
-		/* -- HEIGHT -- */
 		--center-lista-r-h  : calc(var(--centro-h) * 98 / 100);
+		
+	}
+	/*DETTAGLIO RICETTA*/*{
+		--center-ricetta-w : calc(var(--centro-w) * 58 / 100);
 		--center-ricetta-h: calc(var(--centro-h) * 98 / 100);
 	}
 	#lista{
 		border-right: 0.01vw solid lightgray;
 	}
 }
+
+
+/* MOBILE */
+@media screen and (orientation:portrait), screen and (orientation:landscape) and (height<=400px) {
+	/*LISTA*/*{
+		--center-lista-r-w : calc(var(--centro-w) * 100 / 100);
+		--center-lista-r-h  : calc(var(--centro-h) * 98 / 100);
+		
+	}
+	/*DETTAGLIO RICETTA*/*{
+		--center-ricetta-w : calc(var(--centro-w) * 100 / 100);
+		--center-ricetta-h: calc(var(--centro-h) * 98 / 100);
+	}
+	#lista{
+		z-index: 0;
+		top: 0%;
+		left: 0%;
+		position: absolute;
+	}
+	#dettaglio-ricetta{
+		z-index: 0;
+		top: 0%;
+		left: 0%;
+		position: absolute;
+		transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), width 1s cubic-bezier(0.19, 1, 0.22, 1);
+		background-color: white;
+	}
+}
+
 
 #lista{
 	height: var(--center-lista-r-h);
@@ -38,4 +54,3 @@
 	width: var(--center-ricetta-w);
 	display: inline-block;
 }
-
