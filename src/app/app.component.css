@@ -1,15 +1,4 @@
-* {
-	/*WIDTH*/
-	--c-w: 98vw;
-	--c-h: 97vh;
-
-	--border-w : 0.1vw;
-	--margin-w : 0.5vw; 
-	--margin-w-r : 0.9vw; 
-
-	--c-w-r: calc(var(--c-w) - (var(--border-w) * 2));
-
-	/* COLORS */
+/*COLORI*/ *{
 	--main-bg-color:		white;
 	--main-fg-color:		black;
 	--accent-color:			#9fa8da;		/* 200 indigo */
@@ -18,83 +7,63 @@
 	--unactive-color:		#b4b8c1;		/* 100 indigo dark */
 	--logo-color: 			var(--darker-accent-color);
 	--border-color: 		var(--unactive-color);
+}
 
-	/*alto*/
-	--alto-h : calc(var(--c-h) * 7 / 100);
+
+/*GLOBALE*/ *{
+	--c-w: 98vw;
+	--c-h: 97vh;
+
+	--border-w : 0.1vw;
+	--margin-w : 0.5vw; 
+	--margin-w-r : 0.9vw; 
+
+	--c-w-r: calc(var(--c-w) - (var(--border-w) * 2));
+}
+
+/*ALTO*/ *{
+	--alto-h : calc(var(--c-h) * 10 / 100);
 	--alto-w : var(--c-w-r);
 	--alto-margins:calc(var(--alto-h) * 15 / 100 );
+	--alto-font-size: calc(var(--alto-h) * 30 / 100);
+}
 
-	/*basso*/ 
-	--basso-h :calc(var(--c-h) * 0 / 1000);
-	--basso-w : var(--c-w-r);
-
-	/*centro*/
+/*CENTRO*/ *{
 	--centro-h : calc(var(--c-h) - var(--alto-h) - var(--basso-h));
 	--centro-w : var(--c-w-r);
-
-	width: var(--c-w-r);
-	height: var(--c-h);
-
-	/*BORDER*/
-	--border-complete: var(--border-w) solid var(--border-color);
-
-	/*others*/
-	--padding-address-bar : 5vh;
-
-	/*KEYBOARD EVENT*/
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	/*STYLE*/
-	box-sizing: border-box;
-	z-index: inherit;
 }
 
-@media screen and (orientation:landscape){
-	*{
-		--alto-font-size: calc(var(--alto-h) * 25 / 100);
-	}	
-}
-
-@media screen and (orientation:portrait){
-	*{
-		--c-h: 90vh;
-		--alto-font-size: calc(var(--alto-h) * 20 / 100);
-	}
+/*BASSO*/ *{
+	--basso-h :calc(var(--c-h) * 0 / 1000);
+	--basso-w : var(--c-w-r);
 }
 
 body{
 	background-color: var(--main-fg-color);
 }
 
-.completo{
+#completo{
 	height: var(--c-h);
 	width: var(--c-w-r);
 	left: var(--margin-w);
 	top: var(--margin-w);
 	position: absolute;
-	
 }
 
-.alto {
+#alto {
 	height: var(--alto-h);
 	width: var(--alto-w);
-	
 }
 
-.centro{
+#centro{
 	left: 0;
 	top:  var(--alto-h) ;
 	position: absolute;
 	height: var(--centro-h);
 	width: var(--centro-w);
-
 }
 
-.basso {
+#basso {
 	left: 0;
 	top: calc(var(--centro-h) + var(--alto-h)) ;
 	position: absolute;

@@ -1,28 +1,12 @@
-<nav class="navbar navbar-expand navbar-light" id="alto-interno">
-	<div class="container-fluid"  *ngIf="menu_visibile">
-		<a class="navbar-brand fa fa-book titolo" id="logo" routerLink="/">
-			<span>Ricette</span>
-		</a>
-		<div class="collapse navbar-collapse" id="routesmenu">
-			<ul class="navbar-nav me-auto">
-				<li class="nav-item" *ngFor="let t of tabs">
-					<a 
-						class="nav-link" 
-						aria-current="page" 
-						[routerLink]="t.link"
-						routerLinkActive="active selected"
-					>{{t.name}}</a>
-				</li>
-			</ul>
-			<img
-				class="img-thumbnail img-rounded" 
-				src="assets/hamburger_close.png" 
-				alt="hamburger_close"
-				id="hamburger"
-
-				[ngClass]="{'hamburger-press':ham_pressed,'hamburger-norm':!ham_pressed }"
-				(mousedown)="hamFlag()" (mouseup)="hamFlag()"
-			>
-		</div>
+<div class="p-1" id="pannello">
+	<div class="fa fa-book" id="logo" routerLink="/">
+		<span>Ricette</span>
 	</div>
-</nav>
+</div>
+
+<div class="p-1" id="pulsante">
+	<img class="p-1"
+			src="assets/hamburger_close.png" 
+			alt="hamburger_close"
+	>
+</div>

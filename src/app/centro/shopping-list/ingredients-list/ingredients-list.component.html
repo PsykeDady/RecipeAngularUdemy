@@ -1,9 +1,0 @@
-<div class="lista-ingredienti">
-	<ul class="list-group list-group-flush">
-		<li class="list-group-item d-flex justify-content-between align-items-center"  id="iname" *ngFor="let ingredient of ingredientService.shopping_list" (click)="sendEdit(ingredient)">
-			{{ingredient.name}}
-			<span class="badge rounded-pill" id="qta">{{ingredient.qta}}</span>
-		</li>
-	</ul>
-</div>
-	
