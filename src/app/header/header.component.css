@@ -1,6 +1,6 @@
 /*Pulsante*/*{
 	--pulsante-zindex: 9999;
-	--pulsante-height:calc(var(--c-h) * 0.8 / 10); /*altezza pulsante*/
+	--pulsante-height:calc(var(--alto-h)); /*altezza pulsante*/
 	--pulsante-width: var(--pulsante-height); /*larghezza pulsante button*/
 	--pulsante-font-size:calc(var(--pulsante-height) / 3);
 	--pulsante-shadow-blur:calc(var(--pulsante-height) / 3);
@@ -9,11 +9,7 @@
 	--pulsante-t-padding: calc(var(--pulsante-height)*10/100) ;
 }
 
-@media screen and (orientation:landscape) {
-	/*Pulsante*/*{
-		--pulsante-height:calc(var(--alto-h)*88 / 100);
-	}
-}
+
 
 /* COMPONENTI */
 
@@ -35,11 +31,7 @@
 
 #pulsante{
 	position: fixed;
-	margin-left: calc(var(--alto-w) - var(--pulsante-width) - var(--margin-w));
 	height: var(--alto-h);
-}
-
-#pulsante>img{
 	background-color: var(--darker-accent-color);
 	border-radius: var(--pulsante-width);
 	border-bottom-right-radius: 0;
@@ -56,7 +48,7 @@
 	z-index: var(--pulsante-zindex);
 }
 
-#pulsante>img:active{
+#pulsante:active{
 	box-shadow: none;
 	background-color: var(--lighter-accent-color);
 }
@@ -88,7 +80,6 @@
 }
 
 /* MEDIA ADJUSTMENT */
-
 
 @media screen and (orientation:landscape) and (height>400px) {
 	#pulsante, #indietro{

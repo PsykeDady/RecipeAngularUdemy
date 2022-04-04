@@ -1,3 +1,5 @@
+/** Impostazione delle variabili **/
+
 /*COLORI*/ *{
 	--main-bg-color:		white;
 	--main-fg-color:		black;
@@ -31,12 +33,15 @@
 /*CENTRO*/ *{
 	--centro-h : calc(var(--c-h) - var(--alto-h) - var(--basso-h));
 	--centro-w : var(--c-w-r);
+	--centro-top : var(--alto-h);
 }
 
 /*BASSO*/ *{
 	--basso-h :calc(var(--c-h) * 0 / 1000);
 	--basso-w : var(--c-w-r);
 }
+
+/** COMPONENTI **/
 
 body{
 	background-color: var(--main-fg-color);
@@ -57,7 +62,7 @@ body{
 
 #centro{
 	left: 0;
-	top:  var(--alto-h) ;
+	top:  var(--centro-top) ;
 	position: absolute;
 	height: var(--centro-h);
 	width: var(--centro-w);
@@ -70,4 +75,30 @@ body{
 	background-color: var(--lighter-accent-color);
 	height: var(--basso-h);
 	width: var(--basso-w);
+}
+
+/** MEDIA QUERY **/
+
+
+/*DESKTOP*/ @media screen and (orientation:landscape) and (height>400px) {
+	
+}
+
+/*MOBILE*/ @media screen and (orientation:portrait), screen and (orientation:landscape) and (height<=400px) {
+	
+}
+
+/*MOBILE - LANDSCAPE ONLY*/ @media screen and (orientation:portrait) {
+	/*ALTO*/ *{
+		--alto-h : calc(var(--c-h) * 8 / 100);
+	}
+}
+
+/*MOBILE - LANDSCAPE ONLY*/ @media screen and (orientation:landscape) and (height<=400px) {
+	/*ALTO*/ *{
+		--alto-h : calc(var(--c-h) * 15 / 100);
+	}
+	/*CENTRO*/ *{
+		--centro-top : calc(var(--c-h) * 10 / 100);
+	}
 }

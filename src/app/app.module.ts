@@ -23,6 +23,7 @@ import { AddIngredientsComponent } from './centro/shopping-list/add-ingredients/
 import { IngredientsService } from 'src/services/ingredients.service';
 import { EditIngredientsService } from 'src/services/edit.ingredients.service';
 import { IngredientsGuard } from 'src/guards/ingredients.guard';
+import { HamburgerComponent } from './header/hamburger/hamburger.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { IngredientsGuard } from 'src/guards/ingredients.guard';
 	RicettaComponent,
 	ModificaRicettaComponent,
 	IngredientsListComponent,
-	AddIngredientsComponent
+	AddIngredientsComponent,
+ HamburgerComponent
 ],
   imports: [
 	BrowserModule,
