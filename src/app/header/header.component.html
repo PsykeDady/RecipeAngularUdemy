@@ -2,6 +2,14 @@
 	<div class="fa fa-book" id="logo" routerLink="/">
 		<span>Ricette</span>
 	</div>
+	<div class="pe-2">
+
+	</div>
+	<ul class="list-group-horizontal">
+		<li class="list-group-item-text me-3" *ngFor="let tab of tabs" [routerLink]="tab.link" routerLinkActive="text-blur">
+			{{tab.name}}
+		</li>
+	</ul>
 </div>
 
 <img class="p-1" id="pulsante"

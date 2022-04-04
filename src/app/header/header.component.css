@@ -17,14 +17,24 @@
 #pannello{
 	border-radius: var(--border-w);
 	background-color: var(--darker-accent-color);
-	color: var(--main-bg-color);
-	cursor: pointer;
-	font-size: var(--alto-font-size);
+	color: var(--main-bg-color);	
 	vertical-align: middle;
 }
 
 #pannello *{
 	margin-top: calc(var(--alto-h)*12/100);
+	display: inline;
+}
+
+#pannello>#logo, #pannello li{
+	cursor: pointer;
+}
+#pannello #logo{
+	font-size: var(--alto-font-size);
+}
+#pannello li{
+	font-size: calc(var(--alto-font-size) * 80 / 100);
+	font-style: italic;
 }
 
 /* Hamburger */

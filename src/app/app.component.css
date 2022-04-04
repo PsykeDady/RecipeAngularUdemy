@@ -99,6 +99,5 @@ body{
 		--alto-h : calc(var(--c-h) * 15 / 100);
 	}
 	/*CENTRO*/ *{
-		--centro-top : calc(var(--c-h) * 10 / 100);
 	}
 }

@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { Tab } from 'src/models/Tab.model';
+import { RoutesService } from 'src/services/static/Routes.service';
 
 @Component({
-  selector: 'app-hamburger',
-  templateUrl: './hamburger.component.html',
-  styleUrls: ['./hamburger.component.css']
+	selector: 'app-hamburger',
+	templateUrl: './hamburger.component.html',
+	styleUrls: ['./hamburger.component.css']
 })
-export class HamburgerComponent implements OnInit {
+export class HamburgerComponent {
 
-  constructor() { }
+	tabs:Tab[] = RoutesService.getRoutes();
 
-  ngOnInit(): void {
-  }
+	constructor() {
+		
+	}
 
 }
