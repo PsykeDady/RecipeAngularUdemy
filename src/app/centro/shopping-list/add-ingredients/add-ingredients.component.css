@@ -69,3 +69,7 @@
 	width      : var(--add-i-pulsanti-lg-w   );
 	margin-left: var(--add-i-pulsanti-lg-left);
 }
+
+.ng-invalid{
+	border-color: red;
+}

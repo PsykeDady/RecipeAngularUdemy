@@ -17,7 +17,7 @@ import { RecipesGuard } from 'src/guards/recipes.guard';
 import { RicettaComponent } from './centro/ricette/ricetta/ricetta.component';
 import { ModificaRicettaComponent } from './centro/ricette/ricetta/modifica-ricetta/modifica-ricetta.component';
 import { EditRecipeService } from 'src/services/edit.recipe.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IngredientsListComponent } from './centro/shopping-list/ingredients-list/ingredients-list.component';
 import { AddIngredientsComponent } from './centro/shopping-list/add-ingredients/add-ingredients.component';
 import { IngredientsService } from 'src/services/ingredients.service';
@@ -27,36 +27,37 @@ import { HamburgerComponent } from './header/hamburger/hamburger.component';
 
 
 @NgModule({
-  declarations: [
-	AppComponent,
-	HeaderComponent,
-	FooterComponent,
-	CentroComponent,
-	NotFoundComponent,
-	RicetteComponent,
-	ShoppingListComponent,
-	ListaRicetteComponent,
-	DettaglioRicettaComponent,
-	RicettaComponent,
-	ModificaRicettaComponent,
-	IngredientsListComponent,
-	AddIngredientsComponent,
- HamburgerComponent
-],
-  imports: [
-	BrowserModule,
-	FormsModule,
-	AppRouting
-  ],
-  providers: [
-	NotFoundsGuard,
-	RecipeService,
-	RecipesGuard,
-	EditRecipeService,
-	IngredientsService,
-	EditIngredientsService,
-	IngredientsGuard
-  ],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HeaderComponent,
+		FooterComponent,
+		CentroComponent,
+		NotFoundComponent,
+		RicetteComponent,
+		ShoppingListComponent,
+		ListaRicetteComponent,
+		DettaglioRicettaComponent,
+		RicettaComponent,
+		ModificaRicettaComponent,
+		IngredientsListComponent,
+		AddIngredientsComponent,
+		HamburgerComponent
+	],
+	imports: [
+		BrowserModule,
+		FormsModule,
+		ReactiveFormsModule,
+		AppRouting
+	],
+	providers: [
+		NotFoundsGuard,
+		RecipeService,
+		RecipesGuard,
+		EditRecipeService,
+		IngredientsService,
+		EditIngredientsService,
+		IngredientsGuard
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

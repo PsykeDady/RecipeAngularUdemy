@@ -1,0 +1,42 @@
+<form class="form-group container" [formGroup]="addForm">
+
+	<div class="row form-group">
+		<div class="col-md-3 pt-md-3">
+			<label for="nome" class="text-blur-more" style="vertical-align:middle;">Name</label>
+		</div>
+		<div class="col-md-7 p-2">
+			<input type="text" name="nome" id="nomei" class="col-md-7 form-control m-md-1" formControlName="nomei" [(ngModel)]="ingredient.name">
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-md-3 pt-md-3">
+			<label for="qta" class="text-blur-more" style="vertical-align:middle;">Qta</label>
+		</div>
+		<div class="col-md-7 p-2">
+			<input type="number" name="qta" id="qtai" class="col-md-7 form-control m-md-1" formControlName="qtai" [(ngModel)]="ingredient.qta">
+		</div>
+	</div>
+	<div class="row p-1">
+		<button 
+			class="btn btn-success col-md-3"
+			[ngClass]="editModeFlag?'col-5':'col-12'"
+			(click)="salva()"
+			[disabled]="addForm.invalid"
+		>
+			{{editModeFlag?"Edit":"Add"}}
+		</button>
+		<button 
+			class="btn btn-danger col-5 col-md-3 offset-2 offset-md-1"
+			(click)="cancella()"
+			*ngIf="editModeFlag"
+		>
+			Delete
+		</button>
+		<button 
+			class="btn btn-secondary offset-md-1 col-md-3 mt-2 mt-md-0"
+			(click)="pulisci()"
+		>	
+			Reset
+		</button>
+	</div>
+</form>
