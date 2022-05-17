@@ -9,6 +9,13 @@
 	--pulsante-t-padding: calc(var(--pulsante-height)*10/100) ;
 }
 
+/*MenuMobile*/*{
+	--w-menum:0vw;
+	--h-menum:0vh;
+	--l-menum:calc(var(--c-w-r) - var(--w-menum));
+	--t-menum:calc(var(--pulsante-height));
+}
+
 
 
 /* COMPONENTI */
@@ -63,6 +70,27 @@
 	background-color: var(--lighter-accent-color);
 }
 
+/* Menu Mobile */
+#menuMobile{
+	width: var(--w-menum);
+	height: 0px; /*var(--h-menum)*/;
+	left: var(--l-menum);
+	top: var(--t-menum);
+	position: absolute;
+	z-index: 9999;
+	transition: all 300ms cubic-bezier(1,0,0,1);
+}
+
+#menuMobile>ul>li{
+	background-color: var(--lighter-accent-color);
+	color: var(--unactive-color);
+}
+
+#menuMobile>ul>li:hover{
+	background-color: var(--darker-accent-color);
+	color: var(--main-bg-color);
+}
+
 /* Indietro */
 
 #indietro{
@@ -92,12 +120,17 @@
 /* MEDIA ADJUSTMENT */
 
 @media screen and (orientation:landscape) and (height>400px) {
-	#pulsante, #indietro{
+	#pulsante, #indietro,#menuMobile{
 		display: none;
 	}
 }
 
 @media screen and (orientation:portrait), screen and (orientation:landscape) and (height<=400px) {
+	/*MenuMobile*/*{
+		--w-menum:calc(var(--c-w-r) * 30 / 100 );
+		--h-menum:calc(var(--c-h) * 90 / 100 );
+		--l-menum:calc(var(--c-w-r) - var(--w-menum));
+	}
 	#pannello{
 		display: none;
 	}

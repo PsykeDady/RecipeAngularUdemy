@@ -15,7 +15,17 @@
 <img class="p-1" id="pulsante"
 	src="assets/hamburger_close.png" 
 	alt="hamburger_close"
+	(click)="apriMenu()"
 >
+
+<div id="menuMobile">
+		<ul class="list-group">
+			
+			<li class="list-group-item" *ngFor="let tab of tabs" [routerLink]="tab.link" routerLinkActive="text-blur-more text-black">
+				{{tab.name}}
+			</li>
+		</ul>
+</div>
 
 <div id="indietro" (click)="indietro()">
 	<span class="fa fa-2x fa-angle-left" (click)="indietro()"></span>

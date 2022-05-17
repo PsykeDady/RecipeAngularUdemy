@@ -1,0 +1,8 @@
+<ul class="list-group">
+	<li class="list-group-item" *ngFor="let ing of ingredientService.shopping_list">
+		<div class="">
+			{{ing.name}}
+			<span class="badge rounded-pill bg-dark pull-right"> {{ing.qta}} </span>
+		</div>
+	</li>
+</ul>
