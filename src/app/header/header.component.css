@@ -83,13 +83,13 @@
 
 #menuMobile>ul>li{
 	background-color: var(--lighter-accent-color);
-	color: var(--unactive-color);
+	color: var(--main-fg-color);
 }
 
 #menuMobile>ul>li:hover{
-	background-color: var(--darker-accent-color);
 	color: var(--main-bg-color);
 }
+
 
 /* Indietro */
 

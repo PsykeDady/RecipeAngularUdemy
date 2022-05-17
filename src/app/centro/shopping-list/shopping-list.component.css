@@ -31,3 +31,9 @@
 	width : var(--center-lista-i-w);
 	height: var(--center-lista-i-h);
 }
+
+#centro-shopping-list{
+	width: var(--centro-w);
+	height: var(--centro-h);
+	overflow-y: scroll;
+}

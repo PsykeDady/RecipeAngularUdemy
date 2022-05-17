@@ -21,7 +21,7 @@
 <div id="menuMobile">
 		<ul class="list-group">
 			
-			<li class="list-group-item" *ngFor="let tab of tabs" [routerLink]="tab.link" routerLinkActive="text-blur-more text-black">
+			<li class="list-group-item" *ngFor="let tab of tabs" [routerLink]="tab.link" routerLinkActive="text-blur-more text-secondary" (click)="apriMenu()">
 				{{tab.name}}
 			</li>
 		</ul>
