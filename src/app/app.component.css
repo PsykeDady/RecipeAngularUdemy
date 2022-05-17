@@ -72,7 +72,7 @@ body{
 	left: 0;
 	top: calc(var(--centro-h) + var(--alto-h)) ;
 	position: absolute;
-	background-color: var(--lighter-accent-color);
+	/* background-color: var(--lighter-accent-color); /* abilita per test */
 	height: var(--basso-h);
 	width: var(--basso-w);
 }
@@ -88,9 +88,12 @@ body{
 	
 }
 
-/*MOBILE - LANDSCAPE ONLY*/ @media screen and (orientation:portrait) {
+/*MOBILE - PORTRAIT ONLY*/ @media screen and (orientation:portrait) {
 	/*ALTO*/ *{
 		--alto-h : calc(var(--c-h) * 8 / 100);
+	}
+	/*BASSO*/ *{
+		--basso-h :calc(var(--c-h) * 51 / 1000);
 	}
 }
 
@@ -99,5 +102,8 @@ body{
 		--alto-h : calc(var(--c-h) * 15 / 100);
 	}
 	/*CENTRO*/ *{
+	}
+	/*BASSO*/ *{
+		--basso-h :calc(var(--c-h) * 160 / 1000);
 	}
 }

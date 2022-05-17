@@ -1,5 +1,5 @@
-<ul class="list-group">
-	<li class="list-group-item" *ngFor="let ing of ingredientService.shopping_list">
+<ul class="list-group ps-1 pe-1">
+	<li class="list-group-item" *ngFor="let ing of ingredientService.shopping_list" (click)="sendEdit(ing)">
 		<div class="">
 			{{ing.name}}
 			<span class="badge rounded-pill bg-dark pull-right"> {{ing.qta}} </span>
