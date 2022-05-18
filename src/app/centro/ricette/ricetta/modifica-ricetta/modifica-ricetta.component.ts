@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Ingredient } from 'src/models/Ingredient.model';
 import { Recipe } from 'src/models/Recipe.model';
@@ -11,9 +11,10 @@ import { StringsUtils } from 'src/utilities/strings.utils';
   templateUrl: './modifica-ricetta.component.html',
   styleUrls: ['./modifica-ricetta.component.css']
 })
-export class ModificaRicettaComponent  {
+export class ModificaRicettaComponent implements OnInit{
 	recipe:Recipe;
 	newRecipe:boolean=false;
+	valid:boolean=false;
 
 	constructor(
 			public 	recipeService 		: RecipeService, 
@@ -26,6 +27,10 @@ export class ModificaRicettaComponent  {
 			this.newRecipe=this.recipe.name=="";
 		})
 	}
+	
+	ngOnInit(): void {
+		this.check();
+	}
 
 	hasImg():boolean{
 		return this.recipe.imgPath && this.recipe.imgPath!="";
@@ -34,11 +39,11 @@ export class ModificaRicettaComponent  {
 	changeImage(){
 		let el:HTMLInputElement =document.createElement("input")
 		el.type="file";
-		el.onchange = e => {
+		el.onchange = () => {
 			var file : File = el.files[0];
 			var reader : FileReader = new FileReader();
 			reader.readAsDataURL(file);
-			reader.onload = lettura => {
+			reader.onload = () => {
 				this.recipe.imgPath = ""+reader.result;
 			} 
 		}
@@ -57,6 +62,14 @@ export class ModificaRicettaComponent  {
 
 	trackByFn(index : any) :any {
 		return index;  
+	}
+
+	check(){
+		this.valid=true;
+
+		this.recipe.ingredients.forEach(v=> {
+			if (v.name=="" ||v.qta<=0) this.valid=false;
+		})
 	}
 
 	cambia(e:Event, i:number, qtaOrName:string):void {
@@ -87,6 +100,7 @@ export class ModificaRicettaComponent  {
 			}
 			return v;
 		})
+		this.check();
 	}
 
 	salvaModifiche():void{
@@ -112,6 +126,7 @@ export class ModificaRicettaComponent  {
 
 	addIngredient(){
 		this.recipe.addIngredient(new Ingredient("",0))
+		this.check();
 	}
 
 }
