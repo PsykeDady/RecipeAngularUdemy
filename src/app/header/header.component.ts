@@ -12,6 +12,7 @@ export class HeaderComponent{
 
 	tabs:Tab[] = RoutesService.getRoutes();
 	aperturaMenu:boolean = false
+	
 
 	constructor(public router:Router){
 		RoutesService.cambiorotte.subscribe(()=>{
@@ -25,12 +26,16 @@ export class HeaderComponent{
 	}
 
 	apriMenu():void{
-		this.aperturaMenu=!this.aperturaMenu;
-		let el:HTMLElement =document.getElementById("menuMobile")
-		if(this.aperturaMenu){
-			el.style.height="var(--h-menum)"
+		let menuMobile:HTMLElement = document.getElementById("menuMobile");
+	
+		
+		console.log("menuMobile.classList",menuMobile.classList);
+
+
+		if(menuMobile.classList.contains("open")){
+			menuMobile.classList.remove("open");
 		} else {
-			el.style.height="0";
+			menuMobile.classList.add("open");
 		}
 	}
 

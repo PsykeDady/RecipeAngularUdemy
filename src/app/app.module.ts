@@ -24,6 +24,7 @@ import { IngredientsService } from 'src/services/ingredients.service';
 import { EditIngredientsService } from 'src/services/edit.ingredients.service';
 import { IngredientsGuard } from 'src/guards/ingredients.guard';
 import { HamburgerComponent } from './header/hamburger/hamburger.component';
+import { CloseablePopup } from 'src/directives/closeable_popup.directive';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { HamburgerComponent } from './header/hamburger/hamburger.component';
 		ModificaRicettaComponent,
 		IngredientsListComponent,
 		AddIngredientsComponent,
-		HamburgerComponent
+		HamburgerComponent,
+		CloseablePopup
 	],
 	imports: [
 		BrowserModule,

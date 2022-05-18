@@ -18,10 +18,10 @@
 	(click)="apriMenu()"
 >
 
-<div id="menuMobile">
+<div id="menuMobile" closeable-popup>
 		<ul class="list-group">
 			
-			<li class="list-group-item" *ngFor="let tab of tabs" [routerLink]="tab.link" routerLinkActive="text-blur-more text-secondary" (click)="apriMenu()">
+			<li class="list-group-item" *ngFor="let tab of tabs" [routerLink]="tab.link" routerLinkActive="text-blur-more text-secondary">
 				{{tab.name}}
 			</li>
 		</ul>

@@ -81,6 +81,10 @@
 	transition: all 300ms cubic-bezier(1,0,0,1);
 }
 
+#menuMobile.open{
+	height: var(--h-menum);
+}
+
 #menuMobile>ul>li{
 	background-color: var(--lighter-accent-color);
 	color: var(--main-fg-color);
