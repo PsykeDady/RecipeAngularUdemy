@@ -12,7 +12,7 @@ export class CloseablePopup {
 	}
 
 	@HostListener("click") 
-	onClick (event: Event){	
+	onClick (){	
 		this.apriMenu();
 	}
 

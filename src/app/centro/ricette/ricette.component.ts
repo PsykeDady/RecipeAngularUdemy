@@ -15,8 +15,6 @@ export class RicetteComponent {
 			e => e instanceof NavigationEnd
 		)).subscribe(v=>{
 			let ne=v as NavigationEnd;
-			console.log("ne.urlAfterRedirects",ne.urlAfterRedirects)
-			
 			this.showDettaglio=ne.urlAfterRedirects!="/recipes";
 		})
 	}
