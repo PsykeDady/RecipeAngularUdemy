@@ -25,6 +25,7 @@ import { EditIngredientsService } from 'src/services/edit.ingredients.service';
 import { IngredientsGuard } from 'src/guards/ingredients.guard';
 import { HamburgerComponent } from './header/hamburger/hamburger.component';
 import { CloseablePopup } from 'src/directives/closeable_popup.directive';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { CloseablePopup } from 'src/directives/closeable_popup.directive';
 		BrowserModule,
 		FormsModule,
 		ReactiveFormsModule,
-		AppRouting
+		AppRouting,
+		HttpClientModule
 	],
 	providers: [
 		NotFoundsGuard,

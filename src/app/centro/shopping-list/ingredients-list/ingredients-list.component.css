@@ -15,3 +15,7 @@ span#qta{
 
 	padding-bottom: var(--last-element);
 }
+
+li {
+	cursor: pointer;
+}

@@ -1,27 +1,28 @@
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { GenericResponse } from "src/models/GenericResponse.model";
 import { Ingredient } from "src/models/Ingredient.model";
 import { Ingredients } from "src/models/Ingredients.model";
 
+@Injectable()
 export class IngredientsService {
 	private _shopping_list: Ingredients = new Ingredients(
-		new Ingredient("Farina",0.5),
-		new Ingredient("Acqua",1),
-		new Ingredient("Lievito di birra",0.3),
-		new Ingredient("Polpa di pomodoro",1),
-		new Ingredient("Gorgonzola",1),
-		new Ingredient("Mozzarella di bufala",1),
-		new Ingredient("Fontina",1),
-		new Ingredient("Parmigiano",1),
-		new Ingredient("Cocacola",0.5),
-		new Ingredient("Panna",1),
-		new Ingredient("Lievito secco",0.3),
-		new Ingredient("Patate",1),
-		new Ingredient("Emmental",1),
-		new Ingredient("Mozzarella vaccina",1),
-		new Ingredient("Sale",1),
-		new Ingredient("Pepe",1)
+		
 	); 
 
+	public constructor(private http:HttpClient){
+		console.log("get");
+		http.post("http://localhost:8080/ingredients",{}).subscribe( risposta=>{
+				let rispostaGenerica:GenericResponse = risposta as GenericResponse;
+				console.log("risposta as GenericResponse",rispostaGenerica);
+				console.log(`ingredienti: ${(rispostaGenerica.content["results"] as Ingredient[]).map(v=>v.name+"("+v.qta+")").reduce((p,c)=>p+"|"+c)}`)
+			}
+		)
+	}
+	
+
 	get shopping_list () {
+		
 		return this._shopping_list.ingredients;
 	}
 
