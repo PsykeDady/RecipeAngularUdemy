@@ -5,4 +5,11 @@ export class Ingredient {
 	public equal(i : Ingredient): boolean {
 		return i!=null && this.name==i.name && this.qta==i.qta;
 	}
+
+	public toJson(){
+		return {
+			"name":this.name,
+			"qta":this.qta
+		}
+	}
 }
