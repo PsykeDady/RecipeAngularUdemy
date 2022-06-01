@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { interval, Subscription } from 'rxjs';
 import { RecipeService } from 'src/services/recipe.service';
 import { StringsUtils } from 'src/utilities/strings.utils';
 
@@ -8,10 +9,19 @@ import { StringsUtils } from 'src/utilities/strings.utils';
   templateUrl: './lista-ricette.component.html',
   styleUrls: ['./lista-ricette.component.css']
 })
-export class ListaRicetteComponent {
+export class ListaRicetteComponent  implements OnInit, OnDestroy{
 
-	constructor(public recipeService:RecipeService, private router:Router){
+	recipeListUpdater: Subscription;
 
+	constructor(public recipeService:RecipeService){}
+
+	ngOnInit(): void {
+		this.recipeService.fetchList();
+		this.recipeListUpdater = interval(5000).subscribe(()=>{this.recipeService.fetchList()});
+	}
+
+	ngOnDestroy(): void {
+		this.recipeListUpdater.unsubscribe();
 	}
 
 	getLinkName (recipe_name:string) {

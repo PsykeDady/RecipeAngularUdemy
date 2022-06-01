@@ -2,14 +2,14 @@ import { Ingredient } from "./Ingredient.model";
 import { Ingredients } from "./Ingredients.model";
 
 export class Recipe{
-	public name:string; 
-	public description:string; 
-	public imgPath:string; 
-	private _ingredients : Ingredients = new Ingredients(); 
+	public name:string;
+	public descrizione:string;
+	public imgPath:string;
+	private _ingredients : Ingredients = new Ingredients();
 
-	public constructor(name:string, description:string, imgPath:string, ...ingredients: Ingredient[]) {
+	public constructor(name:string, descrizione:string, imgPath:string, ...ingredients: Ingredient[]) {
 		this.name= name;
-		this.description= description;
+		this.descrizione= descrizione;
 		this.imgPath= imgPath;
 		if(ingredients){
 			ingredients.forEach(v=>{this._ingredients.push(v)});
@@ -35,9 +35,18 @@ export class Recipe{
 
 	toString():string{
 		return `Recipe Name:${this.name}\n`
-			+`Description: ${this.description}\n`
+			+`Descrizione: ${this.descrizione}\n`
 			+`ImgPath: ${this.imgPath}\n`
 			+`Ingredients: ${this._ingredients.toString()}`;
+	}
+
+	toJson() {
+		return {
+			"name":this.name,
+			"ingredients":this.ingredients,
+			"descrizione":this.descrizione,
+			"imgPath":this.imgPath
+		}
 	}
 
 }

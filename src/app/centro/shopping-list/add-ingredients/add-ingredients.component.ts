@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Ingredient } from 'src/models/Ingredient.model';
 import { EditIngredientsService } from 'src/services/edit.ingredients.service';
 import { IngredientsService } from 'src/services/ingredients.service';
 import { NumberValidator } from 'src/validators/number.validator';
 
 @Component({
-  selector: 'app-add-ingredients',
-  templateUrl: './add-ingredients.component.html',
-  styleUrls: ['./add-ingredients.component.css']
+	selector: 'app-add-ingredients',
+	templateUrl: './add-ingredients.component.html',
+	styleUrls: ['./add-ingredients.component.css']
 })
 export class AddIngredientsComponent implements OnInit{
-	ingredient:Ingredient = null; 
+	ingredient:Ingredient = null;
 	editModeFlag:boolean = false;
-	addForm:FormGroup;
 
 	constructor(private ingredientsService:IngredientsService, private editIngredientService: EditIngredientsService){
 		this.ingredient= editIngredientService.new_ingredient;
@@ -24,10 +22,6 @@ export class AddIngredientsComponent implements OnInit{
 		})
 	}
 	ngOnInit(): void {
-		this.addForm = new FormGroup ({
-			"nomei": new FormControl("",Validators.required),
-			"qtai": new FormControl(0,[Validators.required,NumberValidator.positiveNumber])
-		})
 	}
 
 	salva():void{
@@ -53,13 +47,20 @@ export class AddIngredientsComponent implements OnInit{
 	cancella():void{
 		if(this.editMode()){
 			this.ingredientsService.remove(this.ingredient)
-		} 
-		
+		}
+
 		this.pulisci()
 	}
 
 	public editMode():boolean{
 		return this.editModeFlag;
 	}
-	
+
+	public numericValidation():boolean{
+		return this.ingredient.qta>0;
+	}
+
+	public addEnabled():boolean{
+		return this.ingredient.name=="" || !(this.ingredient.qta) || this.ingredient.qta<0;
+	}
 }

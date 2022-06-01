@@ -1,3 +1,4 @@
-.ng-invalid{
+.ng-invalid,.invalido{
 	border-color: red;
+	border-left: red var(--margin-w) solid;
 }

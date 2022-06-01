@@ -1,27 +1,27 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-12 p-2">
-			<a class="btn btn-primary" 
+			<a class="btn btn-primary"
 			routerLink="/recipes/newRecipe">
 				New Recipe
 			</a>
 		</div>
 	</div>
 	<hr>
-	
+
 	<div class="row" id="">
 		<div class="col-12" id="ricette">
 			<div *ngFor="let recipe of recipeService.recipes"
 				class="list-group row"
 			>
-				<a 
-					routerLink={{getLinkName(recipe.name)}} 
+				<a
+					routerLink={{getLinkName(recipe.name)}}
 					routerLinkActive="selected"
 					class="list-group-item"
 				>
 					<div class="pull-left">
 						<h5 class="pb-1">{{recipe.name.substring(0,17)+(recipe.name.length>17?"...":"")}}</h5>
-						<small class="text-muted m-0">{{recipe.description.substring(0,22)+(recipe.description.length>22?"...":"")}}</small>
+						<small class="text-muted m-0">{{recipe.descrizione.substring(0,22)+(recipe.descrizione.length>22?"...":"")}}</small>
 					</div>
 					<span class="pull-right mt-2 mt-md-1">
 						<img [src]="recipe.imgPath" alt="{{recipe.name}}" class="img-thumbnail" >
@@ -30,5 +30,5 @@
 			</div>
 		</div>
 	</div>
-	<br>		
+	<br>
 </div>

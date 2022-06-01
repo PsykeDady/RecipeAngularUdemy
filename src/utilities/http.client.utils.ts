@@ -3,7 +3,8 @@ import { GenericResponse } from "src/models/GenericResponse.model";
 export class HttpClientUtils {
 	private constructor() {}
 
-	public static readonly URL_BASE="http://localhost:8080";
+	// public static readonly URL_BASE="http://localhost:8080";
+	public static readonly URL_BASE="http://192.168.92.243:8080";
 	public static readonly CONTEXT_BASE="recipbe";
 	public static readonly INGREDIENTS_BASE="ingredients";
 	public static readonly RECIPES_BASE="recipes";
@@ -17,8 +18,12 @@ export class HttpClientUtils {
 	public static readonly POST_EDIT_INGREDIENTS=`${HttpClientUtils.POST_INGREDIENTS}/edit`;
 	public static readonly POST_REMOVE_INGREDIENTS=`${HttpClientUtils.POST_INGREDIENTS}/delete`;
 
+	public static readonly POST_ADD_RECIPES=`${HttpClientUtils.POST_RECIPES}/add`;
+	public static readonly POST_EDIT_RECIPES=`${HttpClientUtils.POST_RECIPES}/edit`;
+	public static readonly POST_REMOVE_RECIPES=`${HttpClientUtils.POST_RECIPES}/delete`;
 
-	public static responseOkKo(rispostaGenerica:GenericResponse):boolean{
+
+	public static responseOk(rispostaGenerica:GenericResponse):boolean{
 		return 200<=rispostaGenerica.code&&rispostaGenerica.code<=300;
 	}
 

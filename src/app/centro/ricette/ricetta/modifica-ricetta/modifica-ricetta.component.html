@@ -1,5 +1,5 @@
 <div class="container overflow-auto" id="modificaRicetta">
-	
+
 	<!-- INIZIO TITOLO -->
 	<div class="row" *ngIf="newRecipe; else staticName">
 		<div class="col-2 text-blur-more position-relative">
@@ -26,7 +26,7 @@
 		<figure *ngIf="hasImg();else emptyImg" class="figure col-12">
 			<img [src]="this.recipe.imgPath" class="figure-img img-fluid rounded" alt="recipe.name" (click)="changeImage()">
 		</figure>
-	
+
 		<ng-template #emptyImg>
 			<button class="btn btn-info" (click)="changeImage()">
 				<i class="fa fa-file-image-o" aria-hidden="true">
@@ -40,13 +40,13 @@
 	<div class="row">
 	</div>
 	<!-- SEPARATORE nome-img-->
-	
+
 	<!-- INIZIO DESCRIZIONE-->
 	<div class="row p-2">
 		<small class="text-blur" for="descrizione" id="ldescrizione">
 			Descrizione Ricetta
 		</small>
-		<textarea class="form-control" [(ngModel)]="recipe.description" 
+		<textarea class="form-control" [(ngModel)]="recipe.descrizione"
 		id="descrizione"></textarea>
 	</div>
 	<!-- FINE DESCRIZIONE-->
@@ -62,7 +62,7 @@
 		<div class="col-7 p-2">
 			<input class="form-control" type="text"  [defaultValue]="ingredient.name" (input)='cambia($event,indice,"name")'>
 		</div>
-		
+
 		<div class="col-3 p-2">
 			<input class="form-control" type="number"  value="{{ingredient.qta}}" (input)='cambia($event,indice,"qta")'>
 		</div>

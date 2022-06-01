@@ -1,10 +1,14 @@
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { GenericResponse } from "src/models/GenericResponse.model";
 import { Recipe } from "src/models/Recipe.model";
-import { Ingredient} from "src/models/Ingredient.model";
+import { HttpClientUtils } from "src/utilities/http.client.utils";
 import { StringsUtils } from "src/utilities/strings.utils";
 
+@Injectable()
 export class RecipeService{
 	private _recipes : Recipe [] = [
-		new Recipe("Niente","prendi un piatto vuoto, servilo","https://m.media-amazon.com/images/I/51FCjiqxNUL._AC_SL1002_.jpg"),
+		/* new Recipe("Niente","prendi un piatto vuoto, servilo","https://m.media-amazon.com/images/I/51FCjiqxNUL._AC_SL1002_.jpg"),
 		new Recipe('Pasta al sugo','Penne condite con sugo','https://static.cookist.it/wp-content/uploads/sites/21/2017/10/penne-al-sugo-di-pomodoro.jpg',
 			new Ingredient("penne",500),
 			new Ingredient("passata di pomodoro",0.5),
@@ -21,12 +25,51 @@ export class RecipeService{
 			new Ingredient("Pikachu",1),
 			new Ingredient("Rabbia",99),
 			new Ingredient("Pistola",1)
-		)
-	] ; 
+		) */
+	];
+
+	constructor(private http:HttpClient){
+		this.fetchList();
+	}
 
 	get recipes() {
 		return this._recipes
 			.slice();
+	}
+
+	fetchList():GenericResponse{
+		let rispostaGenerica:GenericResponse = new GenericResponse("",200,null);
+		if(!this.http) return new GenericResponse("http undefined",400,null);
+		this.http.post(HttpClientUtils.POST_RECIPES,{}).subscribe(
+			risposta=>{
+				rispostaGenerica = risposta as GenericResponse;
+
+				let received_list=rispostaGenerica.content["results"] as Recipe [];
+				if(! HttpClientUtils.responseOk(rispostaGenerica) || !received_list || received_list.length==0){
+
+					this._recipes=[];
+					return rispostaGenerica;
+				}
+
+				for (let r of received_list){
+
+					let missing:boolean=true;
+					this._recipes.map(v=>{
+
+						if(v.name==r.name){
+							missing=false;
+							return r;
+						}
+					})
+					if(missing){
+						this._recipes.push(r);
+					}
+				}
+			},
+			errore=>{
+				return new GenericResponse(errore,400,null);
+			}
+		)
 	}
 
 	getRecipeByName(name:string) : Recipe{
@@ -34,31 +77,80 @@ export class RecipeService{
 		let returned:Recipe=undefined;
 		this._recipes.forEach( v => {
 			if(StringsUtils.getLinkName(v.name)==name) {
-				returned=new Recipe(v.name,v.description, v.imgPath, ...v.ingredients);
+				returned=new Recipe(v.name,v.descrizione, v.imgPath, ...v.ingredients);
 			}
 		});
 
 		return returned;
 	}
 
-	setRecipe(recipe:Recipe) : void {
-		this._recipes.forEach( v => {
-			if(v.name==recipe.name) {
-				v.description=recipe.description;
-				v.imgPath=recipe.imgPath;
-				v.ingredients=recipe.ingredients.filter(ing=>ing.name!="" && ing.qta > 0);
+	setRecipe(recipe:Recipe) : GenericResponse {
+		let rispostaGenerica:GenericResponse = new GenericResponse("",200,null);
+
+		this.http.post(HttpClientUtils.POST_EDIT_RECIPES,recipe.toJson()).subscribe(
+			risposta=>{
+				rispostaGenerica= risposta as GenericResponse;
+				if(HttpClientUtils.responseOk(rispostaGenerica)){
+					return rispostaGenerica;
+				}
+				this.fetchList();
+			},
+			errore=>{
+				return new GenericResponse(errore,400,null);
 			}
-		});
+		)
+		return rispostaGenerica;
 	}
 
 	removeRecipe(recipe:Recipe){
-		this._recipes= this._recipes.filter( v => { if(v.name!==recipe.name) return v;})
+		let rispostaGenerica:GenericResponse = new GenericResponse("",200,null);
+		this.http.post(HttpClientUtils.POST_REMOVE_RECIPES,recipe.toJson()).subscribe(
+			risposta=>{
+				rispostaGenerica = risposta as GenericResponse;
+				if(HttpClientUtils.responseOk(rispostaGenerica)){
+					return rispostaGenerica;
+				}
+				this.fetchList();
+			},
+			errore=>{
+				return new GenericResponse(errore,400,null);
+			}
+		)
 	}
 
 	addRecipe(recipe : Recipe){
-		let newRecipe :Recipe = new Recipe(recipe.name,recipe.description, recipe.imgPath); 
-		newRecipe.ingredients = recipe.ingredients.filter(ing=>ing.name!="" && ing.qta > 0);
-		this._recipes.push(newRecipe);
+		let rispostaGenerica:GenericResponse = new GenericResponse("",200,null);
+		this.http.post(HttpClientUtils.POST_ADD_RECIPES,recipe.toJson()).subscribe(
+			risposta=>{
+				rispostaGenerica = risposta as GenericResponse;
+				rispostaGenerica.content["results"]
+				if(HttpClientUtils.responseOk(rispostaGenerica)){
+					return rispostaGenerica;
+				}
+				this.fetchList();
+			},
+			errore=>{
+				return new GenericResponse(errore,400,null);
+			}
+		)
 	}
 
 }
+
+/**
+ *
+		let rispostaGenerica:GenericResponse = new GenericResponse("",200,null);
+		this.http.post(HttpClientUtils.POST_RECIPES,{}).subscribe(
+			risposta=>{
+				rispostaGenerica = risposta as GenericResponse;
+				rispostaGenerica.content["results"]
+				if(HttpClientUtils.responseOk(rispostaGenerica)){
+					return rispostaGenerica;
+				}
+				this.fetchList();
+			},
+			errore=>{
+				return new GenericResponse(errore,400,null);
+			}
+		)
+ */
