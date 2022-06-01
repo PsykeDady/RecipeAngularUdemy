@@ -51,19 +51,9 @@ export class RecipeService{
 					return rispostaGenerica;
 				}
 
+				this._recipes=[];
 				for (let r of received_list){
-
-					let missing:boolean=true;
-					this._recipes.map(v=>{
-
-						if(v.name==r.name){
-							missing=false;
-							return r;
-						}
-					})
-					if(missing){
-						this._recipes.push(r);
-					}
+					this._recipes.push(r);
 				}
 			},
 			errore=>{
