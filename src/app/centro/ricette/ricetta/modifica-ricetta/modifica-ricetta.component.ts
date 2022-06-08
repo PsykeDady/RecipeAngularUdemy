@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Ingredient } from 'src/models/Ingredient.model';
 import { Recipe } from 'src/models/Recipe.model';
 import { EditRecipeService } from 'src/services/edit.recipe.service';
@@ -11,25 +12,31 @@ import { StringsUtils } from 'src/utilities/strings.utils';
   templateUrl: './modifica-ricetta.component.html',
   styleUrls: ['./modifica-ricetta.component.css']
 })
-export class ModificaRicettaComponent implements OnInit{
+export class ModificaRicettaComponent implements OnInit, OnDestroy{
 	recipe:Recipe;
 	newRecipe:boolean=false;
 	valid:boolean=false;
+	subscription:Subscription = null;
 
 	constructor(
-			public 	recipeService 		: RecipeService, 
-			public 	editRecipeService	: EditRecipeService, 
-			public 	router				: Router, 
-					activatedRoute		: ActivatedRoute
+			public 	recipeService 		: RecipeService,
+			public 	editRecipeService	: EditRecipeService,
+			public 	router				: Router,
+			private activatedRoute		: ActivatedRoute
 	){
-		activatedRoute.params.subscribe(()=>{
+
+	}
+
+	ngOnInit(): void {
+		this.subscription=this.activatedRoute.params.subscribe(()=>{
 			this.recipe=this.editRecipeService.new_recipe;
 			this.newRecipe=this.recipe.name=="";
 		})
-	}
-	
-	ngOnInit(): void {
 		this.check();
+	}
+
+	ngOnDestroy(): void {
+		this.subscription.unsubscribe();
 	}
 
 	hasImg():boolean{
@@ -45,9 +52,9 @@ export class ModificaRicettaComponent implements OnInit{
 			reader.readAsDataURL(file);
 			reader.onload = () => {
 				this.recipe.imgPath = ""+reader.result;
-			} 
+			}
 		}
-		
+
 		el.click();
 		el.remove();
 	}
@@ -61,7 +68,7 @@ export class ModificaRicettaComponent implements OnInit{
 	}
 
 	trackByFn(index : any) :any {
-		return index;  
+		return index;
 	}
 
 	check(){

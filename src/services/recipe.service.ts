@@ -28,6 +28,8 @@ export class RecipeService{
 		) */
 	];
 
+	private fetchPull: boolean=false;
+
 	constructor(private http:HttpClient){
 		this.fetchList();
 	}
@@ -42,6 +44,7 @@ export class RecipeService{
 		if(!this.http) return new GenericResponse("http undefined",400,null);
 		this.http.post(HttpClientUtils.POST_RECIPES,{}).subscribe(
 			risposta=>{
+				this.fetchPull=true;
 				rispostaGenerica = risposta as GenericResponse;
 
 				let received_list=rispostaGenerica.content["results"] as Recipe [];
@@ -58,8 +61,15 @@ export class RecipeService{
 			},
 			errore=>{
 				return new GenericResponse(errore,400,null);
+			}, ()=>{
+				this.fetchPull=false;
 			}
 		)
+
+		while(this.fetchPull);
+
+		console.log(rispostaGenerica);
+		return rispostaGenerica;
 	}
 
 	getRecipeByName(name:string) : Recipe{

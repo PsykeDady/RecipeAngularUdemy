@@ -6,11 +6,10 @@ export class EditRecipeService {
 
 	public set recipe (recipe:Recipe) {
 		this._recipe=  new Recipe(recipe.name,recipe.descrizione, recipe.imgPath);
-		this._recipe.ingredients=recipe.ingredients.filter(v=> true);
+		this._recipe.ingredients=recipe.ingredients.filter(()=> true);
 
 		this._new_recipe=new Recipe(recipe.name,recipe.descrizione, recipe.imgPath);
-		this._new_recipe.ingredients=recipe.ingredients.filter(v=> true);
-
+		this._new_recipe.ingredients=recipe.ingredients.filter(()=> true);
 	}
 
 	/**
