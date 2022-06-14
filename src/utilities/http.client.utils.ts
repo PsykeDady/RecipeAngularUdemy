@@ -3,8 +3,8 @@ import { GenericResponse } from "src/models/GenericResponse.model";
 export class HttpClientUtils {
 	private constructor() {}
 
-	// public static readonly URL_BASE="http://localhost:8080";
-	public static readonly URL_BASE="http://192.168.92.243:8080";
+	 public static readonly URL_BASE="http://localhost:8080";
+	//public static readonly URL_BASE="http://192.168.92.243:8080";
 	public static readonly CONTEXT_BASE="recipbe";
 	public static readonly INGREDIENTS_BASE="ingredients";
 	public static readonly RECIPES_BASE="recipes";
