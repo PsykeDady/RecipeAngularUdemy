@@ -25,7 +25,8 @@ import { EditIngredientsService } from 'src/services/edit.ingredients.service';
 import { IngredientsGuard } from 'src/guards/ingredients.guard';
 import { HamburgerComponent } from './header/hamburger/hamburger.component';
 import { CloseablePopup } from 'src/directives/closeable_popup.directive';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { RecipesResolver } from 'src/services/resolvers/recipes.resolver';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import {HttpClientModule} from '@angular/common/http';
 		EditRecipeService,
 		IngredientsService,
 		EditIngredientsService,
-		IngredientsGuard
+		IngredientsGuard,
+		RecipesResolver
 	],
 	bootstrap: [AppComponent]
 })

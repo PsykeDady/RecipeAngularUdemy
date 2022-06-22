@@ -29,7 +29,7 @@ export class HeaderComponent{
 		let menuMobile:HTMLElement = document.getElementById("menuMobile");
 	
 		
-		console.log("menuMobile.classList",menuMobile.classList);
+		//console.log("menuMobile.classList",menuMobile.classList);
 
 
 		if(menuMobile.classList.contains("open")){

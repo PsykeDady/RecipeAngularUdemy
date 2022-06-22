@@ -18,7 +18,7 @@ export class CloseablePopup {
 
 	apriMenu():void{
 		let menuMobile:HTMLElement = this.el.nativeElement as HTMLElement;
-		console.log("menuMobile.classList",menuMobile.classList);
+		//console.log("menuMobile.classList",menuMobile.classList);
 
 		if(menuMobile.classList && menuMobile.classList.contains("open")){
 			menuMobile.classList.remove("open");

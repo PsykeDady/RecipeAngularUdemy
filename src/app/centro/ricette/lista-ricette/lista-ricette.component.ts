@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import { RecipeService } from 'src/services/recipe.service';
 import { StringsUtils } from 'src/utilities/strings.utils';
@@ -17,7 +16,7 @@ export class ListaRicetteComponent  implements OnInit, OnDestroy{
 
 	ngOnInit(): void {
 		this.recipeService.fetchList();
-		this.recipeListUpdater = interval(5000).subscribe(()=>{this.recipeService.fetchList()});
+		this.recipeListUpdater = interval(5000).subscribe(()=>{this.recipeService.fetchList().subscribe()});
 	}
 
 	ngOnDestroy(): void {

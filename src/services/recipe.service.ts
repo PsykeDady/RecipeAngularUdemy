@@ -1,5 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { tap } from "rxjs/operators";
 import { GenericResponse } from "src/models/GenericResponse.model";
 import { Recipe } from "src/models/Recipe.model";
 import { HttpClientUtils } from "src/utilities/http.client.utils";
@@ -30,7 +32,7 @@ export class RecipeService{
 
 
 	constructor(private http:HttpClient){
-		this.fetchList();
+		this.fetchList().subscribe();
 	}
 
 	get recipes() {
@@ -38,33 +40,20 @@ export class RecipeService{
 			.slice();
 	}
 
-	fetchList():GenericResponse{
-		let rispostaGenerica:GenericResponse = new GenericResponse("",200,null);
-		if(!this.http) return new GenericResponse("http undefined",400,null);
-		this.http.post(HttpClientUtils.POST_RECIPES,{}).subscribe(
-			risposta=>{
-				rispostaGenerica = risposta as GenericResponse;
+	fetchList():Observable<GenericResponse>{
+		return this.http.post<GenericResponse>(HttpClientUtils.POST_RECIPES,{}).pipe(tap(
+			risposta => {
+				let risposta2=new GenericResponse("",200,risposta.content); // workaround per applicare metodi su risposta
 
-				let received_list=rispostaGenerica.content["results"] as Recipe [];
-				if(! HttpClientUtils.responseOk(rispostaGenerica) || !received_list || received_list.length==0){
-
+				if(200<=risposta.code&&risposta.code<300){
+					let recipes: Recipe[] =risposta2.getResponse() as Recipe[];
 					this._recipes=[];
-					return rispostaGenerica;
+					for(let rec of recipes){
+						this._recipes.push(rec);
+					}
 				}
-
-				this._recipes=[];
-				for (let r of received_list){
-					this._recipes.push(r);
-				}
-			},
-			errore=>{
-				return new GenericResponse(errore,400,null);
 			}
-		)
-
-
-		console.log(rispostaGenerica);
-		return rispostaGenerica;
+		))
 	}
 
 	getRecipeByName(name:string) : Recipe{
@@ -88,7 +77,7 @@ export class RecipeService{
 				if(HttpClientUtils.responseOk(rispostaGenerica)){
 					return rispostaGenerica;
 				}
-				this.fetchList();
+				this.fetchList().subscribe();
 			},
 			errore=>{
 				return new GenericResponse(errore,400,null);
@@ -105,7 +94,7 @@ export class RecipeService{
 				if(HttpClientUtils.responseOk(rispostaGenerica)){
 					return rispostaGenerica;
 				}
-				this.fetchList();
+				this.fetchList().subscribe();
 			},
 			errore=>{
 				return new GenericResponse(errore,400,null);
@@ -121,7 +110,7 @@ export class RecipeService{
 				if(HttpClientUtils.responseOk(rispostaGenerica)){
 					return rispostaGenerica;
 				}
-				this.fetchList();
+				this.fetchList().subscribe();
 			},
 			errore=>{
 				return new GenericResponse(errore,400,null);
@@ -141,7 +130,7 @@ export class RecipeService{
 				if(HttpClientUtils.responseOk(rispostaGenerica)){
 					return rispostaGenerica;
 				}
-				this.fetchList();
+				this.fetchList().subscribe();
 			},
 			errore=>{
 				return new GenericResponse(errore,400,null);

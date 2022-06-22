@@ -8,6 +8,8 @@ import {
 	UrlTree
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+import { GenericResponse } from 'src/models/GenericResponse.model';
 import { Recipe } from 'src/models/Recipe.model';
 import { Tab } from 'src/models/Tab.model';
 import { EditRecipeService } from 'src/services/edit.recipe.service';
@@ -33,16 +35,23 @@ export class RecipesGuard implements CanActivate, CanDeactivate<void> {
 			this.editRecipeService.recipe = new Recipe("","","");
 			return true;
 		}
-		this.recipeService.fetchList();
-		for (let r of this.recipeService.recipes){
-			let nomeRicetta: string = StringsUtils.getLinkName(r.name)
-			if (nomeRicetta === recipeName){
-				this.editRecipeService.recipe = r;
-				return true;
+
+		return this.recipeService.fetchList().pipe( map(risposta => {
+			let risposta2=new GenericResponse("",200,risposta.content); // workaround per applicare metodi su risposta
+			let recipes : Recipe[] = (risposta2.getResponse()) as Recipe[];
+
+			for (let recipe of recipes){
+				let nomeRicetta: string = StringsUtils.getLinkName(recipe.name)
+				if (nomeRicetta === recipeName){
+					this.editRecipeService.recipe = recipe;
+					return true;
+				}
 			}
-		}
-		this.route.navigate(['/', Tab.NOTFOUNDTAB.link]);
-		return false;
+			this.route.navigate(['/', Tab.NOTFOUNDTAB.link]);
+			return false;
+		}) 
+		);
+		
 	}
 
 
