@@ -15,7 +15,7 @@ export class ListaRicetteComponent  implements OnInit, OnDestroy{
 	constructor(public recipeService:RecipeService){}
 
 	ngOnInit(): void {
-		this.recipeService.fetchList();
+		this.recipeService.fetchList().subscribe();
 		this.recipeListUpdater = interval(5000).subscribe(()=>{this.recipeService.fetchList().subscribe()});
 	}
 

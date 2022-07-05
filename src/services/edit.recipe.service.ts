@@ -32,7 +32,7 @@ export class EditRecipeService {
 				this._new_recipe.ingredients &&
 				this._recipe.ingredients.length==this._new_recipe.ingredients.length && (this._recipe.ingredients.length==0 ||
 				this._recipe.ingredients.map(
-					(value, i) => {
+					(value) => {
 						for(let v of this._new_recipe.ingredients){
 							if(value.name==v.name){
 								return value.qta == v.qta;

@@ -21,6 +21,13 @@ export class DettaglioRicettaComponent  {
 		private router:Router, 
 		private ingredientService:IngredientsService
 	){
+		activatedRoute.queryParams.subscribe(queryParam=>{
+			recipeService.fetchList().subscribe(()=>{},error=>{},()=>{
+				this.recipe = recipeService.getRecipeByName(activatedRoute.snapshot.params["name"])
+				this.toggle=true;
+			});
+			
+		});
 		activatedRoute.params.subscribe(v=>{
 			this.recipe = recipeService.getRecipeByName(v["name"])
 			this.toggle=true;
@@ -49,7 +56,7 @@ export class DettaglioRicettaComponent  {
 		let cnfr=confirm("E se poi te penti? Cancellare?")
 
 		if(cnfr){
-			this.recipeService.removeRecipe(this.recipe);
+			this.recipeService.removeRecipe(this.recipe).subscribe();
 			this.router.navigate(["/recipes"])
 		} 
 		this.toggleScroll()

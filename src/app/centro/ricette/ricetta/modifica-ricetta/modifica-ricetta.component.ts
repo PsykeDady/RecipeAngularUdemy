@@ -118,12 +118,14 @@ export class ModificaRicettaComponent implements OnInit, OnDestroy{
 		})
 		let recipeFound:Recipe=this.recipeService.getRecipeByName(this.recipe.name);
 		if(recipeFound){
-			this.recipeService.setRecipe(this.recipe);
+			this.recipeService.setRecipe(this.recipe).subscribe();
 		} else {
-			this.recipeService.addRecipe(this.recipe);
+			this.recipeService.addRecipe(this.recipe).subscribe();
 		}
 		this.editRecipeService.recipe=this.recipe;
-		this.router.navigate(["/recipes", StringsUtils.getLinkName(this.recipe.name)]);
+		this.recipeService.fetchList().subscribe(()=>{},()=>{},()=>{
+			this.router.navigate(["/recipes", StringsUtils.getLinkName(this.recipe.name)]);
+		})
 	}
 
 	annullaModifiche():void{

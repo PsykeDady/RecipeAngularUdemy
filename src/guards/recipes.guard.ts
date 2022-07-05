@@ -8,7 +8,7 @@ import {
 	UrlTree
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { GenericResponse } from 'src/models/GenericResponse.model';
 import { Recipe } from 'src/models/Recipe.model';
 import { Tab } from 'src/models/Tab.model';

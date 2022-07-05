@@ -30,7 +30,6 @@ export class RecipeService{
 		) */
 	];
 
-
 	constructor(private http:HttpClient){
 		this.fetchList().subscribe();
 	}
@@ -68,54 +67,16 @@ export class RecipeService{
 		return returned;
 	}
 
-	setRecipe(recipe:Recipe) : GenericResponse {
-		let rispostaGenerica:GenericResponse = new GenericResponse("",200,null);
-
-		this.http.post(HttpClientUtils.POST_EDIT_RECIPES,recipe.toJson()).subscribe(
-			risposta=>{
-				rispostaGenerica= risposta as GenericResponse;
-				if(HttpClientUtils.responseOk(rispostaGenerica)){
-					return rispostaGenerica;
-				}
-				this.fetchList().subscribe();
-			},
-			errore=>{
-				return new GenericResponse(errore,400,null);
-			}
-		)
-		return rispostaGenerica;
+	setRecipe(recipe:Recipe)  {
+		return this.http.post(HttpClientUtils.POST_EDIT_RECIPES,recipe.toJson());
 	}
 
 	removeRecipe(recipe:Recipe){
-		let rispostaGenerica:GenericResponse = new GenericResponse("",200,null);
-		this.http.post(HttpClientUtils.POST_REMOVE_RECIPES,recipe.toJson()).subscribe(
-			risposta=>{
-				rispostaGenerica = risposta as GenericResponse;
-				if(HttpClientUtils.responseOk(rispostaGenerica)){
-					return rispostaGenerica;
-				}
-				this.fetchList().subscribe();
-			},
-			errore=>{
-				return new GenericResponse(errore,400,null);
-			}
-		)
+		return this.http.post(HttpClientUtils.POST_REMOVE_RECIPES,recipe.toJson());
 	}
 
 	addRecipe(recipe : Recipe){
-		let rispostaGenerica:GenericResponse = new GenericResponse("",200,null);
-		this.http.post(HttpClientUtils.POST_ADD_RECIPES,recipe.toJson()).subscribe(
-			risposta=>{
-				rispostaGenerica = risposta as GenericResponse;
-				if(HttpClientUtils.responseOk(rispostaGenerica)){
-					return rispostaGenerica;
-				}
-				this.fetchList().subscribe();
-			},
-			errore=>{
-				return new GenericResponse(errore,400,null);
-			}
-		)
+		return this.http.post(HttpClientUtils.POST_ADD_RECIPES,recipe.toJson());
 	}
 
 }
