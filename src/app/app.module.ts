@@ -26,6 +26,7 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { FooterComponent } from './footer/footer.component';
 import { HamburgerComponent } from './header/hamburger/hamburger.component';
 import { HeaderComponent } from './header/header.component';
+import { AuthPageComponent } from './centro/authentication/auth-page/auth-page.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { HeaderComponent } from './header/header.component';
 		IngredientsListComponent,
 		AddIngredientsComponent,
 		HamburgerComponent,
-		CloseablePopup
+		CloseablePopup,
+  AuthPageComponent
 	],
 	imports: [
 		BrowserModule,
