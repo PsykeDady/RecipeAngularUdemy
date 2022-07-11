@@ -1,0 +1,4 @@
+input.ng-invalid.ng-touched:not(:focus){
+	border-color: red;
+	border-left: var(--margin-w) red solid;
+}

@@ -1,0 +1,31 @@
+<form class="form-control container-fluid"  (ngSubmit)="login()" [formGroup]="formRegistrazione">
+	<div class="row">
+		<div class="col-6 offset-3 text-center">
+			<legend class="text-blur-more">Login</legend>
+			<small class="text-muted">to get your recipes</small>
+			<hr>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-4 offset-1 p-2">
+			<input type="text" name="uname" id="uname" placeholder="nome utente" class="form-control" formControlName="uname">
+			<label class="text-muted small" for="uname">Name</label>
+		</div>
+		<div class="col-2 offset-2 p-2">
+			<button type="button" class="col-8 btn btn-secondary" (click)="reset()">Reset</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-4 offset-1 p-2">
+			<input type="password" name="upsk" id="upsk" placeholder="password" class="form-control" formControlName="upsk">
+			<label class="text-muted small" for="upsk">Password</label>
+		</div>
+		<div class="col-2 p-2">
+			<button type="submit" class="col-8 btn btn-success">Accedi</button>
+		</div>
+				
+		<div class="col-2 p-2">
+			<button type="button" class="col-8 btn btn-danger" (click)="forgot()">Dimenticata?</button>
+		</div>
+	</div>
+</form>

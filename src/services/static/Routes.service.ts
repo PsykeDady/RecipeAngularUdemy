@@ -4,6 +4,7 @@ import { TabsEnum } from "src/models/Tabs.enum";
 
 export class RoutesService {
 	private static _tabs:Tab[]= [
+		new Tab(TabsEnum.Login,"login"),
 		new Tab(TabsEnum.Recipes,"recipes"),
 		new Tab(TabsEnum["Shopping List"],"shopping")
 	];
