@@ -19,7 +19,7 @@ import { StringsUtils } from 'src/utilities/strings.utils';
 
 @Injectable()
 export class RecipesGuard implements CanActivate, CanDeactivate<void> {
-	constructor(private recipeService: RecipeService, private route: Router, public editRecipeService: EditRecipeService) {}
+	constructor(private recipeService: RecipeService, private router: Router, public editRecipeService: EditRecipeService) {}
 
 	canActivate(
 		route: ActivatedRouteSnapshot,
@@ -47,8 +47,8 @@ export class RecipesGuard implements CanActivate, CanDeactivate<void> {
 					return true;
 				}
 			}
-			this.route.navigate(['/', Tab.NOTFOUNDTAB.link]);
-			return false;
+			//this.route.navigate(['/', Tab.NOTFOUNDTAB.link]);
+			return this.router.createUrlTree(['/', Tab.NOTFOUNDTAB.link]);
 		}) 
 		);
 		
