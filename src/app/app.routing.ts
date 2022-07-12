@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { RicetteAlert } from "src/dynamics/alertbox/ricette.alert.component";
 import { IngredientsGuard } from "src/guards/ingredients.guard";
 import { NotFoundsGuard } from "src/guards/notfounds.guard";
 import { RecipesGuard } from "src/guards/recipes.guard";
@@ -16,6 +17,7 @@ const appRoutes : Routes =  [
 	{path:"shopping", component: ShoppingListComponent, canActivate:[IngredientsGuard], canDeactivate:[IngredientsGuard]},
 	{path:"login", component: AuthPageComponent},
 	{path:"notfound",component: NotFoundComponent, canActivate:[NotFoundsGuard], canDeactivate:[NotFoundsGuard]},
+	{path:"alert",component:RicetteAlert},
 	{path:"", redirectTo:"recipes", pathMatch:"full"},
 	{path:"**", redirectTo:"notfound"}
 

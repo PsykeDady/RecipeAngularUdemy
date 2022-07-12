@@ -27,6 +27,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HamburgerComponent } from './header/hamburger/hamburger.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthPageComponent } from './centro/authentication/auth-page/auth-page.component';
+import { RicetteAlert } from 'src/dynamics/alertbox/ricette.alert.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { AuthPageComponent } from './centro/authentication/auth-page/auth-page.c
 		AddIngredientsComponent,
 		HamburgerComponent,
 		CloseablePopup,
-  AuthPageComponent
+		RicetteAlert,
+		AuthPageComponent
 	],
 	imports: [
 		BrowserModule,
