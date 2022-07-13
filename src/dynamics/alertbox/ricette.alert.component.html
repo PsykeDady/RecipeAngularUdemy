@@ -1,21 +1,24 @@
-<h1>ALERT MODALE CUSTOM</h1>
+<!-- <h1>ALERT MODALE CUSTOM</h1>
 
 <p>Test per modale custom</p>
 
 <button class="btn btn-primary" (click)="open()">
 	open modal
-</button>
+</button> -->
 
 <div id="myModal" class="modal" *ngIf="!closed">
-	<!-- Modal content -->
 	<div class="modal-content" [ngStyle]="classBasedType()">
 		<h3>
-			Modal title
-			<span class="close" (click)="close()">&times;</span>
+			{{titolo|titlecase}}
+			<span class="close" [ngStyle]="classBasedType()"  (click)="close()" (mouseenter)="shadowX($event)" (mouseleave)="shadowX($event)">
+				<span>
+					&times;
+				</span>
+			</span>
 		</h3>
 		<hr>
-		<p class="text-muted">Testo di esempio lungo</p>
-		<hr>
+		<p class="text-muted">{{message||"ciao"}}</p>
+		<!-- <hr>
 		<button class="btn btn-success" (click)="setType('SUCCESS')">
 			changeSuccess
 		</button> 
@@ -30,7 +33,7 @@
 		</button>
 		<button class="btn btn-dark" (click)="setType('DARK')">
 			changeDark
-		</button>
+		</button> -->
 	</div>
 </div>
 

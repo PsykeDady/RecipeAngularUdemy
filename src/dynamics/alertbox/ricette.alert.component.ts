@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
 	selector:"ricette-alert",
@@ -7,8 +7,11 @@ import { Component } from "@angular/core";
 })
 export class RicetteAlert {
 
-	closed:boolean=false;
-	tipologia:"ALERT"|"WARNING"|"SUCCESS"|"DARK"|"";
+	closed:boolean=true;
+	@Input() tipologia:"ALERT"|"WARNING"|"SUCCESS"|"DARK"|"";
+	@Input() message:string; 
+	@Input() titolo:string;
+	@Output() closeEvent : EventEmitter<void> =new EventEmitter<void>(); 
 
 	close(){
 		this.closed=true;
@@ -21,7 +24,6 @@ export class RicetteAlert {
 	classBasedType() {
 		let background_color:string;
 		let color:string;
-		console.log(this.tipologia)
 		switch (this.tipologia) {
 			case "ALERT":
 				background_color="var(--bg-ko)";
@@ -43,8 +45,18 @@ export class RicetteAlert {
 				background_color="#FFFFFF";
 				color="#000000";
 		}
-		console.log(color,background_color)
 		return {'color':color,"background-color":background_color}
+	}
+	
+	shadowX(event){
+		console.log(event.target)
+		let closeX=event.target as HTMLElement
+		if(closeX.style.textShadow){
+			closeX.style.textShadow=""
+		} else {
+			let revertC=closeX.style.color
+			closeX.style.textShadow=`0px 0px 5px ${revertC}`
+		}
 	}
 
 	setType(tipologia:"ALERT"|"WARNING"|"SUCCESS"|"DARK"|""){

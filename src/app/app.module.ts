@@ -28,6 +28,7 @@ import { HamburgerComponent } from './header/hamburger/hamburger.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthPageComponent } from './centro/authentication/auth-page/auth-page.component';
 import { RicetteAlert } from 'src/dynamics/alertbox/ricette.alert.component';
+import { FactoryPlaceholderDirective } from 'src/directives/factory.placeholder.directive';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { RicetteAlert } from 'src/dynamics/alertbox/ricette.alert.component';
 		HamburgerComponent,
 		CloseablePopup,
 		RicetteAlert,
-		AuthPageComponent
+		AuthPageComponent,
+		FactoryPlaceholderDirective
 	],
 	imports: [
 		BrowserModule,
